@@ -14,6 +14,11 @@
     </p>
   </md-card-content>
   <md-card-actions>
-      <button md-button (click)="putInBasket(product)">В корзину</button>
+      <!-- <button md-button (click)="putInBasket(product)">В корзину</button> -->
+      <div class="actions-container">
+          <button md-mini-fab color="primary" class="basket-btn" (click)="putInBasket(product)">
+            <md-icon>add_shopping_cart</md-icon>
+          </button>
+      </div>
   </md-card-actions>
 </md-card>

@@ -9,7 +9,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of basket">
-      <td><img md-card-image class="basket-item-img" src="https://www.mirsmazok.ru/images/orig_574_1297638132arFz4e8Hrd.jpg" alt="Product{{item.Id}}Img"></td>
+      <td><img class="basket-item-img" src="https://www.mirsmazok.ru/images/orig_574_1297638132arFz4e8Hrd.jpg" alt="Product{{item.Id}}Img"></td>
       <td class="text-cell">{{item.Name}}</td>
       <td class="text-cell" style="width: 175px;">
           <button md-icon-button (click)="dec(item)">
