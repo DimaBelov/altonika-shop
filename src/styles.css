@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+ /* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+ 
+ @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+ /* @import '~@angular/material/prebuilt-themes/pink-bluegrey.css'; */
+ /* @import '~@angular/material/prebuilt-themes/purple-green.css'; */
+ 
+ body {
+     min-height: 2000px;
+     /* padding-top: 70px; */
+ }
+ 
+ .icon-bar {
+     width: 100%;
+     background-color: #555;
+     overflow: auto;
+ }
+ 
+ .icon-bar a {
+     float: left;
+     /*width: 20%;*/
+     text-align: center;
+     padding: 12px 0;
+     transition: all 0.3s ease;
+     color: white;
+     font-size: 36px;
+ }
+ 
+ .icon-bar a:hover {
+     background-color: #000;
+ }
+ 
+ .icon-bar a:active {
+     background-color: #4CAF50 !important;
+ }
+ 
+ md-toolbar-row a {
+     color: white;
+ }
+ 
+ .main-outlet {
+     padding-top: 25px;
+ }
+
+ .rotate-90 {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}

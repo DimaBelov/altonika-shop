@@ -1,0 +1,13 @@
+<div>
+  <md-input-container>
+    <label for="login">Login:</label>
+    <input mdInput type="text" [(ngModel)]="user.login" id="login">
+  </md-input-container>
+</div>
+<div>
+    <md-input-container>
+        <label for="password">Password:</label>
+        <input mdInput type="password" [(ngModel)]="user.password" id="password">
+    </md-input-container>
+</div>
+<button md-raised-button (click)="login()">Login</button>
