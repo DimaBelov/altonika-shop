@@ -41,4 +41,9 @@ export class BasketComponent implements OnInit {
     this._basketService.clear();
     this.refresh();
   }
+
+  buy() {
+    console.log('buy');
+    console.log(this.basket);
+  }
 }

@@ -6,6 +6,10 @@
     float: right;
 }
 
+.buy-btn {
+    float: right;
+}
+
 .basket-item-img {
     width: 100px;
     height: 100px;
