@@ -36,6 +36,26 @@
  md-toolbar-row a {
      color: white;
  }
+
+ md-toolbar-row a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+md-toolbar-row a:active {
+    color: white;
+    text-decoration: none;
+}
+
+md-toolbar-row a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+md-toolbar-row a:focus {
+    color: white;
+    text-decoration: none;
+}
  
  .main-outlet {
      padding-top: 25px;

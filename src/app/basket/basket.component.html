@@ -7,17 +7,19 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Название</th>
-      <th>Колличество</th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of basket">
-      <td>{{item.Name}}</td>
-      <td style="width: 175px;">{{item.Quantity}}</td>
+      <td><img md-card-image class="basket-item-img" src="https://www.mirsmazok.ru/images/orig_574_1297638132arFz4e8Hrd.jpg" alt="Product{{item.Id}}Img"></td>
+      <td class="text-cell">{{item.Name}}</td>
+      <td class="text-cell" style="width: 175px;">{{item.Quantity}}</td>
       <td>
-        <button md-icon-button color="warn" (click)="remove(item)" class="remove-btn">
+        <button md-icon-button color="warn" (click)="remove(item)" class="remove-btn text-cell">
           <md-icon>clear</md-icon>
         </button>
       </td>
@@ -25,4 +27,4 @@
   </tbody>
 </table>
 
-<button md-raised-button (click)="clear()">Очистить</button>
+<button md-raised-button (click)="clear()" class="clear-btn">Очистить</button>
