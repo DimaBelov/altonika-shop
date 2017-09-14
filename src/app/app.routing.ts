@@ -22,7 +22,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'basket',
-    component: BasketComponent
+    component: BasketComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
