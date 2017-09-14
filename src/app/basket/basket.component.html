@@ -1,5 +1,22 @@
-<md-list>
+<!-- <md-list>
   <md-list-item *ngFor="let product of basket">
     <p>{{product.Name}}</p>
   </md-list-item>
-</md-list>
+</md-list> -->
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Колличество</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of basket">
+      <td>{{item.Name}}</td>
+      <td style="width: 175px;">{{item.Quantity}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button md-raised-button (click)="clear()">Очистить</button>
