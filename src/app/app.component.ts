@@ -68,4 +68,8 @@ export class AppComponent implements OnInit {
     this._userService.removeCurrentUser();
     this._router.navigate([this.loginRoute]);
   }
+
+  goto(route: string) {
+    this._router.navigate([route]);
+  }
 }
