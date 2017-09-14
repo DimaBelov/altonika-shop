@@ -35,4 +35,4 @@
   </tbody>
 </table>
 
-<button md-raised-button (click)="clear()" class="clear-btn">Очистить</button>
+<button md-raised-button (click)="clear()" class="clear-btn" [disabled]="basket.length < 1">Очистить</button>
