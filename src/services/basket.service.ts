@@ -18,7 +18,7 @@ export class BasketService {
         return;
     }
 
-    localStorage.setItem(this.basketKey, JSON.stringify([]));
+    this.set([]);
   }
 
   get() {
@@ -57,10 +57,42 @@ export class BasketService {
         console.log(exists);
       }
 
-      localStorage.setItem(this.basketKey, JSON.stringify(basket));
+      this.set(basket);
   }
 
-  remove(item) {
+  dec(item: BasketItem) {
+    let basket = this.get();
+    basket.forEach(i => {
+      if (i.Id === item.Id) {
+        if (i.Quantity === 1) {
+          let index = basket.indexOf(i);
+          basket.splice(index, 1);
+          console.log('remove from basket');
+          console.log(i);
+        } else {
+          i.Quantity -= 1;
+          console.log('dec quantity');
+          console.log(i);
+        }
+      }
+    });
+
+    this.set(basket);
+  }
+
+  inc(item: BasketItem) {
+    let basket = this.get();
+    basket.forEach(i => {
+      if (i.Id === item.Id) {
+        i.Quantity += 1;
+        console.log('inc quantity');
+        console.log(i);
+      }
+    });
+    this.set(basket);
+  }
+
+  remove(item: BasketItem) {
     let basket = this.get();
 
     basket.forEach(i => {
@@ -72,11 +104,15 @@ export class BasketService {
       }
     });
 
-    localStorage.setItem(this.basketKey, JSON.stringify(basket));
+    this.set(basket);
   }
 
   clear() {
     localStorage.removeItem(this.basketKey);
     this.init();
+  }
+
+  private set(basket: Array<BasketItem>) {
+    localStorage.setItem(this.basketKey, JSON.stringify(basket));
   }
 }

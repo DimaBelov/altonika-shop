@@ -17,7 +17,15 @@
     <tr *ngFor="let item of basket">
       <td><img md-card-image class="basket-item-img" src="https://www.mirsmazok.ru/images/orig_574_1297638132arFz4e8Hrd.jpg" alt="Product{{item.Id}}Img"></td>
       <td class="text-cell">{{item.Name}}</td>
-      <td class="text-cell" style="width: 175px;">{{item.Quantity}}</td>
+      <td class="text-cell" style="width: 175px;">
+          <button md-icon-button (click)="dec(item)">
+              <md-icon class="md-24">remove</md-icon>
+          </button>
+        {{item.Quantity}}
+        <button md-icon-button (click)="inc(item)">
+            <md-icon class="md-24">add</md-icon>
+        </button>
+      </td>
       <td>
         <button md-icon-button color="warn" (click)="remove(item)" class="remove-btn text-cell">
           <md-icon>clear</md-icon>

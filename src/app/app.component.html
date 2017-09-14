@@ -2,19 +2,12 @@
 
 
     <a md-button routerLink="/" routerLinkActive="active">
-        <!-- <md-icon>home</md-icon> -->
         Altonika Shop
     </a>
     <a md-button routerLink="/basket" routerLinkActive="active">
-        <!-- <button md-icon-button>
-            <md-icon>shopping_basket</md-icon>
-        </button> -->
         Корзина
     </a>
     <div>
-        <!-- <button md-icon-button (click)="logout()" *ngIf="hasCurrentUser">
-            <md-icon>exit_to_app</md-icon>
-        </button> -->
         <button md-button (click)="logout()" *ngIf="hasCurrentUser">
             Выход
         </button>
