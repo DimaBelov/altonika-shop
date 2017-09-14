@@ -3,6 +3,7 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { MdSidenav } from '@angular/material';
 import { UserService } from '@services/user.service';
 import { BasketService } from '@services/basket.service';
+import { ProductHistoryService } from '@services/product-history.service';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,10 @@ export class AppComponent implements OnInit {
     lastOnBottom: true
   };
 
-  constructor(private _router: Router, private _userService: UserService, private _basketService: BasketService) {
+  constructor(private _router: Router, 
+    private _userService: UserService, 
+    private _basketService: BasketService, 
+    private _productHistoryService: ProductHistoryService) {
 
     this.routes = _router.config;
     
@@ -43,6 +47,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this._basketService.init();
+    this._productHistoryService.init();
   }
 
   checkUser() {

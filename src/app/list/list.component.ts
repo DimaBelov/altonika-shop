@@ -3,9 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { MdDialog, MdDialogConfig } from '@angular/material';
 
 import { Product } from '@entities/product';
+import { ProductHistory } from '@entities/product-history';
 import { ProductService } from '@services/product.service';
 import { BasketService } from '@services/basket.service';
-
+import { ProductHistoryService } from '@services/product-history.service';
 import { ProductCardDialogComponent } from '../product-card-dialog/product-card-dialog.component';
 
 @Component({
@@ -18,10 +19,12 @@ export class ListComponent implements OnInit {
   products: Array<Product>;
   filteredProducts: Array<Product>;
   searchText: string;
+  productHistory: Array<ProductHistory>;
 
   constructor(private _route: ActivatedRoute,
     private _productService: ProductService, 
     private _basketService: BasketService,
+    private _productHistoryService: ProductHistoryService,
     private _dialog: MdDialog) {
       _route.queryParams.subscribe(params => {
         this.searchText = params['search'];
@@ -41,6 +44,10 @@ export class ListComponent implements OnInit {
     } else {
       this.filteredProducts = this.products.filter(p => p.Name.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1);
     }
+
+    this.productHistory = this._productHistoryService.getN(5);
+    console.log('productHistory');
+    console.log(this.productHistory);
   }
 
   putInBasket(product: Product) {

@@ -4,14 +4,14 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BasketItem } from '@entities/basket-item';
 import { Product } from '@entities/product';
-// import { LinqService } from 'ng2-linq/ng2-linq';
+import { ProductHistoryService } from '@services/product-history.service';
 
 @Injectable()
 export class BasketService {
 
   private basketKey = 'basket';
 
-  constructor(private _http: HttpClient, /*private linq: LinqService*/) { }
+  constructor(private _http: HttpClient, private _productHistoryService: ProductHistoryService) { }
 
   init() {
     if (localStorage.getItem(this.basketKey) !== null) {
@@ -58,6 +58,7 @@ export class BasketService {
       }
 
       this.set(basket);
+      this._productHistoryService.add(product);
   }
 
   dec(item: BasketItem) {
