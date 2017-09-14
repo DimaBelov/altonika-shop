@@ -19,6 +19,7 @@ import { UserService } from '@services/user.service';
 import { ListComponent } from './list/list.component';
 import { ProductService } from '@services/product.service';
 import { BasketComponent } from './basket/basket.component';
+import { BasketService } from '@services/basket.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { BasketComponent } from './basket/basket.component';
     HttpModule,
     HttpClientModule
   ],
-  providers: [AuthGuard, UserService, ProductService],
+  providers: [AuthGuard, UserService, ProductService, BasketService],
   schemas: [ NO_ERRORS_SCHEMA ],
   bootstrap: [AppComponent]
 })

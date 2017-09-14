@@ -1,14 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { MdSidenav } from '@angular/material';
 import { UserService } from '@services/user.service';
+import { BasketService } from '@services/basket.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   showSidenav = false;
   hasCurrentUser = false;
@@ -27,24 +28,21 @@ export class AppComponent {
     lastOnBottom: true
   };
 
-  constructor(private _router: Router, private _userService: UserService) {
+  constructor(private _router: Router, private _userService: UserService, private _basketService: BasketService) {
 
     this.routes = _router.config;
     
     _router.events.subscribe(event => {
-
-      // if (event instanceof NavigationStart) {
-      //   console.log(_router);
-      //   this.checkUser();
-      // }
-
       if (event instanceof NavigationEnd) {
         console.log(_router);
         this.hasCurrentUser = this._userService.hasCurrentUser();
         this.checkUser();
-        //this.checkRoute();
       }
     });
+  }
+
+  ngOnInit() {
+    this._basketService.init();
   }
 
   checkUser() {
@@ -57,16 +55,6 @@ export class AppComponent {
       this._router.navigate([this.baseRoute]);
     }
   }
-
-  // checkRoute() {
-  //   if (this._router.url === this.baseRoute || this._router.url === this.homeRoute || this._router.url === this.loginRoute) {
-  //     this.showSidenav = false;
-  //   } else {
-  //     this.showSidenav = true;
-  //   }
-
-  //   this.sidenav.opened = false;
-  // }
 
   logout() {
     console.log('logout');

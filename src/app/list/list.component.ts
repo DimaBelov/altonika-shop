@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '@entities/product';
 import { ProductService } from '@services/product.service';
+import { BasketService } from '@services/basket.service';
 
 @Component({
   selector: 'app-list',
@@ -11,10 +12,17 @@ export class ListComponent implements OnInit {
 
   products: Array<Product>;
 
-  constructor(private _productService: ProductService) { }
+  constructor(private _productService: ProductService, private _basketService: BasketService) { }
 
   ngOnInit() {
     this.products = this._productService.get();
+  }
+
+  putInBasket(product: Product) {
+    console.log('putInBasket');
+    console.log(product);
+
+    this._basketService.putIn(product);
   }
 
 }

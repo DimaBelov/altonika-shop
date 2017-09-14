@@ -1,3 +1,5 @@
-<p>
-  basket works!
-</p>
+<md-list>
+  <md-list-item *ngFor="let product of basket">
+    <p>{{product.Name}}</p>
+  </md-list-item>
+</md-list>

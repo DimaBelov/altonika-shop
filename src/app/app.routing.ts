@@ -3,6 +3,8 @@ import { ModuleWithProviders } from '@angular/core';
 import { AuthGuard } from './auth-guard';
 import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
+import { BasketComponent } from './basket/basket.component';
+
 
 const appRoutes: Routes = [
   {
@@ -11,13 +13,17 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: 'list',
     component: ListComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'basket',
+    component: BasketComponent
   }
 ];
 
