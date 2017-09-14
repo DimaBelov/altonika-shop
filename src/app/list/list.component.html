@@ -1,0 +1,24 @@
+<md-grid-list cols="3" rowHeight="200px">
+  <md-grid-tile
+      *ngFor="let product of products"
+      [colspan]="1"
+      [rowspan]="1">
+    <md-card class="product-card">
+      <md-card-header>
+        <!-- <div md-card-avatar>
+            <md-icon>face</md-icon>
+        </div> -->
+        <md-card-title>{{product.Name}}</md-card-title>
+        <!-- <md-card-subtitle>{{currentUser.login}}</md-card-subtitle> -->
+      </md-card-header>
+      <md-card-content>
+        <p>
+          {{product.Description}}
+        </p>
+      </md-card-content>
+      <md-card-actions>
+          <button md-button>В корзину</button>
+      </md-card-actions>
+    </md-card>
+  </md-grid-tile>
+</md-grid-list>

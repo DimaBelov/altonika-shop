@@ -16,11 +16,16 @@ import { routing } from './app.routing';
 import { AuthGuard } from './auth-guard';
 import { LoginComponent } from './login/login.component';
 import { UserService } from '@services/user.service';
+import { ListComponent } from './list/list.component';
+import { ProductService } from '@services/product.service';
+import { BasketComponent } from './basket/basket.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ListComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,7 @@ import { UserService } from '@services/user.service';
     HttpModule,
     HttpClientModule
   ],
-  providers: [AuthGuard, UserService],
+  providers: [AuthGuard, UserService, ProductService],
   schemas: [ NO_ERRORS_SCHEMA ],
   bootstrap: [AppComponent]
 })
