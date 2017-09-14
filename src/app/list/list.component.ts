@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MdDialog, MdDialogConfig } from '@angular/material';
 
 import { Product } from '@entities/product';
 import { ProductService } from '@services/product.service';
 import { BasketService } from '@services/basket.service';
+
+import { ProductCardDialogComponent } from '../product-card-dialog/product-card-dialog.component';
 
 @Component({
   selector: 'app-list',
@@ -18,7 +21,8 @@ export class ListComponent implements OnInit {
 
   constructor(private _route: ActivatedRoute,
     private _productService: ProductService, 
-    private _basketService: BasketService) {
+    private _basketService: BasketService,
+    private _dialog: MdDialog) {
       _route.queryParams.subscribe(params => {
         this.searchText = params['search'];
         this.refresh();
@@ -44,5 +48,17 @@ export class ListComponent implements OnInit {
     console.log(product);
 
     this._basketService.putIn(product);
+  }
+
+  openProductCardDialog(product: Product) {
+    let dialogConfig = new MdDialogConfig();
+    let dialogRef = this._dialog.open(ProductCardDialogComponent, dialogConfig);
+    dialogRef.componentInstance.product = product;
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        
+      }
+    });
   }
 }

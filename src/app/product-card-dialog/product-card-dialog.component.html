@@ -1,0 +1,19 @@
+<md-card class="product-card">
+  <md-card-header>
+    <!-- <div md-card-avatar>
+        <md-icon>face</md-icon>
+    </div> -->
+    <md-card-title>{{product.Name}}</md-card-title>
+    <!-- <md-card-subtitle>{{currentUser.login}}</md-card-subtitle> -->
+  </md-card-header>
+  <img md-card-image class="product-card-img" src="https://www.mirsmazok.ru/images/orig_574_1297638132arFz4e8Hrd.jpg" alt="Product{{product.Id}}Img"
+    (click)="openProductCardDialog(product)">
+  <md-card-content>
+    <p>
+      {{product.Description}}
+    </p>
+  </md-card-content>
+  <md-card-actions>
+      <button md-button (click)="putInBasket(product)">В корзину</button>
+  </md-card-actions>
+</md-card>

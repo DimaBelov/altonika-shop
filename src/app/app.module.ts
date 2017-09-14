@@ -10,7 +10,6 @@ import { HttpModule } from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-// import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -21,13 +20,15 @@ import { ListComponent } from './list/list.component';
 import { ProductService } from '@services/product.service';
 import { BasketComponent } from './basket/basket.component';
 import { BasketService } from '@services/basket.service';
+import { ProductCardDialogComponent } from './product-card-dialog/product-card-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ListComponent,
-    BasketComponent
+    BasketComponent,
+    ProductCardDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +40,11 @@ import { BasketService } from '@services/basket.service';
     MaterialModule,
     AccordionModule,
     HttpModule,
-    HttpClientModule,
-    // Ng2SearchPipeModule
+    HttpClientModule
   ],
   providers: [AuthGuard, UserService, ProductService, BasketService],
   schemas: [ NO_ERRORS_SCHEMA ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ProductCardDialogComponent]
 })
 export class AppModule { }
