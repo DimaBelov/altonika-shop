@@ -21,7 +21,7 @@ export class ProductHistoryService {
     }
 
     get() {
-        return JSON.parse(localStorage.getItem(this.productHistorytKey)) as Array<ProductHistory>;
+        return JSON.parse(localStorage.getItem(this.productHistorytKey)) as Array<Product>;
     }
 
     getN(n: number) {
@@ -36,11 +36,11 @@ export class ProductHistoryService {
 
     add(product: Product) {
         let history = this.get();
-        history.push({Product: product, Date: new Date()});
+        history.push(product);
         this.set(history);
     }
 
-    private set(history: Array<ProductHistory>) {
+    private set(history: Array<Product>) {
         localStorage.setItem(this.productHistorytKey, JSON.stringify(history));
     }
 }

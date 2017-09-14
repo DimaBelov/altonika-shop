@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
   products: Array<Product>;
   filteredProducts: Array<Product>;
   searchText: string;
-  productHistory: Array<ProductHistory>;
+  productHistory: Array<Product>;
 
   constructor(private _route: ActivatedRoute,
     private _productService: ProductService, 
