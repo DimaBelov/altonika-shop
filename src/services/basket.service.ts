@@ -30,7 +30,7 @@ export class BasketService {
       let exists: BasketItem;
 
       basket.forEach(i => {
-        if (i.Id === product.Id) {
+        if (i.Product.Id === product.Id) {
           exists = i;
         }
       });
@@ -44,9 +44,7 @@ export class BasketService {
         // basket.push(product.getBasketItem());  //WTF?!
 
         basket.push({
-          Id: product.Id,
-          Name: product.Name,
-          Description: product.Description,
+          Product: product,
           Quantity: 1
         });
 
@@ -64,7 +62,7 @@ export class BasketService {
   dec(item: BasketItem) {
     let basket = this.get();
     basket.forEach(i => {
-      if (i.Id === item.Id) {
+      if (i.Product.Id === item.Product.Id) {
         if (i.Quantity === 1) {
           let index = basket.indexOf(i);
           basket.splice(index, 1);
@@ -84,7 +82,7 @@ export class BasketService {
   inc(item: BasketItem) {
     let basket = this.get();
     basket.forEach(i => {
-      if (i.Id === item.Id) {
+      if (i.Product.Id === item.Product.Id) {
         i.Quantity += 1;
         console.log('inc quantity');
         console.log(i);
@@ -97,7 +95,7 @@ export class BasketService {
     let basket = this.get();
 
     basket.forEach(i => {
-      if (i.Id === item.Id) {
+      if (i.Product.Id === item.Product.Id) {
         let index = basket.indexOf(i);
         basket.splice(index, 1);
         console.log('remove from basket');

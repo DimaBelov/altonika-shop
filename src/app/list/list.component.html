@@ -11,7 +11,7 @@
         <md-card-title>{{product.Name}}</md-card-title>
         <!-- <md-card-subtitle>{{currentUser.login}}</md-card-subtitle> -->
       </md-card-header>
-      <img md-card-image class="product-card-img" src="https://www.mirsmazok.ru/images/orig_574_1297638132arFz4e8Hrd.jpg" alt="Product{{product.Id}}Img"
+      <img md-card-image class="product-card-img" src="{{product.ImageSource}}" alt="Product{{product.Id}}Img"
         (click)="openProductCardDialog(product)">
       <md-card-content>
         <p>
@@ -35,7 +35,7 @@
       [colspan]="1"
       [rowspan]="1">
     <md-card class="product-history-card">
-      <img md-card-image class="product-history-card-img" src="https://www.mirsmazok.ru/images/orig_574_1297638132arFz4e8Hrd.jpg" alt="Product{{product.Id}}Img"
+      <img md-card-image class="product-history-card-img" src="{{item.ImageSource}}" alt="Product{{product.Id}}Img"
         (click)="openProductCardDialog(product)">
     </md-card>
   </md-grid-tile>

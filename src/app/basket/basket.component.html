@@ -9,8 +9,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of basket">
-      <td><img class="basket-item-img" src="https://www.mirsmazok.ru/images/orig_574_1297638132arFz4e8Hrd.jpg" alt="Product{{item.Id}}Img"></td>
-      <td class="text-cell">{{item.Name}}</td>
+      <td><img class="basket-item-img" src="{{item.Product.ImageSource}}" alt="Product{{item.Product.Id}}Img"></td>
+      <td class="text-cell">{{item.Product.Name}}</td>
       <td class="text-cell" style="width: 175px;">
           <button md-icon-button (click)="dec(item)">
               <md-icon class="md-24">remove</md-icon>
@@ -29,5 +29,5 @@
   </tbody>
 </table>
 
-<!-- <button md-raised-button (click)="clear()" class="clear-btn" [disabled]="basket.length < 1">Очистить</button> -->
 <button md-raised-button color="primary" (click)="buy()" class="buy-btn" [disabled]="basket.length < 1">Купить</button>
+<button md-raised-button (click)="clear()" class="clear-btn" [disabled]="basket.length < 1">Очистить</button>
