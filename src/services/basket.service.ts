@@ -27,11 +27,6 @@ export class BasketService {
 
   putIn(product: Product) {
       let basket = this.get();
-
-      // let exists = this.linq.Enumerable().From(basket).FirstOrDefault(function(x) {
-      //   return x.Id === product.Id;
-      // });
-
       let exists: BasketItem;
 
       basket.forEach(i => {
@@ -63,6 +58,21 @@ export class BasketService {
       }
 
       localStorage.setItem(this.basketKey, JSON.stringify(basket));
+  }
+
+  remove(item) {
+    let basket = this.get();
+
+    basket.forEach(i => {
+      if (i.Id === item.Id) {
+        let index = basket.indexOf(i);
+        basket.splice(index, 1);
+        console.log('remove from basket');
+        console.log(i);
+      }
+    });
+
+    localStorage.setItem(this.basketKey, JSON.stringify(basket));
   }
 
   clear() {

@@ -22,6 +22,11 @@ export class BasketComponent implements OnInit {
     this.basket = this._basketService.get();
   }
 
+  remove(item) {
+    this._basketService.remove(item);
+    this.refresh();
+  }
+
   clear() {
     this._basketService.clear();
     this.refresh();
