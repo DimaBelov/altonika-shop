@@ -57,9 +57,6 @@ export class AppComponent implements OnInit {
   }
 
   search() {
-    if (!this.searchText) {
-      return;
-    }
     this._router.navigate([this.listRoute], {queryParams: {'search': this.searchText}});
   }
 

@@ -3,7 +3,7 @@
         <md-icon>home</md-icon>
     </button>
     <div class="search-box-container" *ngIf="hasCurrentUser">
-        <input type="text" class="form-control search-box" placeholder="Поиск" [(ngModel)]="searchText">
+        <input type="text" class="form-control search-box" placeholder="Поиск" [(ngModel)]="searchText" (keyup.enter)="search()">
         <button md-icon-button class="search-button" (click)="search()">
             <md-icon>search</md-icon>
         </button>
