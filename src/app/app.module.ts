@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+// import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -38,7 +39,8 @@ import { BasketService } from '@services/basket.service';
     MaterialModule,
     AccordionModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    // Ng2SearchPipeModule
   ],
   providers: [AuthGuard, UserService, ProductService, BasketService],
   schemas: [ NO_ERRORS_SCHEMA ],

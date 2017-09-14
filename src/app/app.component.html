@@ -9,7 +9,7 @@
     </a>
     <div class="search-box-container">
         <input type="text" class="form-control search-box" placeholder="Поиск" [(ngModel)]="searchText">
-        <button md-icon-button class="search-button">
+        <button md-icon-button class="search-button" (click)="search()">
             <md-icon>search</md-icon>
         </button>
     </div>

@@ -12,9 +12,11 @@ import { BasketService } from '@services/basket.service';
 export class AppComponent implements OnInit {
   title = 'app';
   hasCurrentUser = false;
+  searchText: string;
 
   baseRoute = '/';
   loginRoute = '/login';
+  listRoute = '/list';
 
   routes: any;
 
@@ -52,6 +54,13 @@ export class AppComponent implements OnInit {
     if (this.hasCurrentUser && this._router.url === this.loginRoute) {
       this._router.navigate([this.baseRoute]);
     }
+  }
+
+  search() {
+    if (!this.searchText) {
+      return;
+    }
+    this._router.navigate([this.listRoute], {queryParams: {'search': this.searchText}});
   }
 
   logout() {
