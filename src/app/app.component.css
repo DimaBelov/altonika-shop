@@ -1,0 +1,13 @@
+.search-box-container {
+    width: 550px;
+    margin: auto;
+}
+
+.search-box {
+    float: left;
+    width: 500px;
+}
+
+.search-button {
+    margin-left: 10px;
+}

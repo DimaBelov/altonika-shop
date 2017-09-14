@@ -5,7 +5,6 @@ import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
 import { BasketComponent } from './basket/basket.component';
 
-
 const appRoutes: Routes = [
   {
     path: '',

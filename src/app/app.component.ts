@@ -11,11 +11,9 @@ import { BasketService } from '@services/basket.service';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  showSidenav = false;
   hasCurrentUser = false;
 
   baseRoute = '/';
-  homeRoute = '/home';
   loginRoute = '/login';
 
   routes: any;

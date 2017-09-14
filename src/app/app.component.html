@@ -7,11 +7,15 @@
     <a md-button routerLink="/basket" routerLinkActive="active">
         Корзина
     </a>
-    <div>
-        <button md-button (click)="logout()" *ngIf="hasCurrentUser">
-            Выход
+    <div class="search-box-container">
+        <input type="text" class="form-control search-box" placeholder="Поиск" [(ngModel)]="searchText">
+        <button md-icon-button class="search-button">
+            <md-icon>search</md-icon>
         </button>
     </div>
+    <button md-button (click)="logout()" *ngIf="hasCurrentUser">
+        Выход
+    </button>
 </md-toolbar>
 
 <div class="container">
