@@ -20,7 +20,6 @@ export class ListComponent implements OnInit {
   filteredProducts: Array<Product>;
   searchText: string;
   productHistory: Array<Product>;
-
   productCardRoute = 'card';
 
   constructor(

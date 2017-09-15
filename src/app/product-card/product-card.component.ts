@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Product } from '@entities/product';
 import { ProductService } from '@services/product.service';
+import { BasketService } from '@services/basket.service';
 
 @Component({
   selector: 'app-product-card',
@@ -14,8 +15,10 @@ export class ProductCardComponent implements OnInit {
   productId: number;
   product: Product = new Product();
 
-  constructor(private _route: ActivatedRoute,
-    private _productService: ProductService) {
+  constructor(
+    private _route: ActivatedRoute,
+    private _productService: ProductService,
+    private _basketService: BasketService) {
     _route.queryParams.subscribe(params => {
       this.productId = params['id'];
       this.refresh();
@@ -38,4 +41,10 @@ export class ProductCardComponent implements OnInit {
     // this.refresh();
   }
 
+  putInBasket(product: Product) {
+    console.log('putInBasket');
+    console.log(product);
+
+    this._basketService.putIn(product);
+  }
 }
