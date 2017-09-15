@@ -3,7 +3,6 @@ import { Product } from '@entities/product';
 import { BasketItem } from '@entities/basket-item';
 import { BasketService } from '@services/basket.service';
 import { OrderService } from '@services/order.service';
-import { UserService } from '@services/user.service';
 import { MdDialog, MdDialogConfig } from '@angular/material';
 import { OrderSuccessDialogComponent } from './order-success-dialog/order-success-dialog.component';
 
@@ -19,22 +18,10 @@ export class BasketComponent implements OnInit {
   constructor(
     private _basketService: BasketService, 
     private _orderService: OrderService,
-    private _userService: UserService,
     private _dialog: MdDialog) { }
 
   ngOnInit() {
     this.refresh();
-
-    this._orderService.getByUser(this._userService.getCurrentUser().id)
-      .subscribe(
-        data => {
-          console.log('user orders');
-          console.log(data);
-        },
-        error => {
-
-        }
-      );
   }
 
   refresh() {

@@ -1,3 +1,22 @@
-<p>
-  personal works!
-</p>
+<div class="component-panel">
+
+  <!-- <md-card>
+    <md-card-header>
+      Мои заказы
+    </md-card-header>
+    <md-card-content>
+      
+    </md-card-content>
+  </md-card> -->
+  
+  <md-expansion-panel *ngFor="let order of orders">
+    <md-expansion-panel-header>
+      <md-panel-title>
+        Заказ №{{order.id}}
+      </md-panel-title>
+      <md-panel-description>
+        Создан: {{order.createDate}}
+      </md-panel-description>
+    </md-expansion-panel-header>
+  </md-expansion-panel>
+</div>
