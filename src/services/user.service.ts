@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 // import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class UserService {
@@ -15,10 +16,6 @@ export class UserService {
     return localStorage.getItem(this.currentUserKey) !== null;
   }
 
-  public setCurrentUser(user: any) {
-    localStorage.setItem(this.currentUserKey, JSON.stringify(user));
-  }
-
   public getCurrentUser() {
     return JSON.parse(localStorage.getItem(this.currentUserKey));
   }
@@ -27,7 +24,19 @@ export class UserService {
     localStorage.removeItem(this.currentUserKey);
   }
 
-  private auth(login: string, password: string) {
-    // this._http.post('', JSON.stringify({login : login, password: password}));
+  auth(user: any) {
+    return this._http.post(environment.apiUrl + 'user', user).subscribe(r => {
+      console.log('auth user');
+      console.log(r);
+
+      if (r !== null) {
+        localStorage.setItem(this.currentUserKey, JSON.stringify(user));  //r
+        console.log('user authenticated');
+        return true;
+      } else {
+        console.log('user not found');
+        return false;
+      }
+    });
   }
 }

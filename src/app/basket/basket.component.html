@@ -9,13 +9,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of basket">
-      <td><img class="basket-item-img" src="{{item.Product.ImageSource}}" alt="Product{{item.Product.Id}}Img"></td>
-      <td class="text-cell">{{item.Product.Name}}</td>
+      <td><img class="basket-item-img" src="{{item.product.imageSource}}" alt="Product{{item.product.id}}Img"></td>
+      <td class="text-cell">{{item.product.name}}</td>
       <td class="text-cell" style="width: 175px;">
           <button md-icon-button (click)="dec(item)">
               <md-icon class="md-24">remove</md-icon>
           </button>
-        {{item.Quantity}}
+        {{item.quantity}}
         <button md-icon-button (click)="inc(item)">
             <md-icon class="md-24">add</md-icon>
         </button>

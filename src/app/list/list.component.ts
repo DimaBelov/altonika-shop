@@ -37,17 +37,22 @@ export class ListComponent implements OnInit {
   }
 
   refresh() {
-    this.products = this._productService.get();
-    
-    if (!this.searchText) {
-      this.filteredProducts = this.products;
-    } else {
-      this.filteredProducts = this.products.filter(p => p.Name.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1);
-    }
+    this._productService.get().subscribe(data => {
+      console.log('data');
+      console.log(data);
 
-    this.productHistory = this._productHistoryService.getN(5);
-    console.log('productHistory');
-    console.log(this.productHistory);
+      this.products = data;
+
+      if (!this.searchText) {
+        this.filteredProducts = this.products;
+      } else {
+        this.filteredProducts = this.products.filter(p => p.name.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1);
+      }
+  
+      this.productHistory = this._productHistoryService.getN(5);
+      console.log('productHistory');
+      console.log(this.productHistory);
+    });
   }
 
   putInBasket(product: Product) {

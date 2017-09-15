@@ -3,8 +3,8 @@ import { BasketItem } from '@entities/basket-item';
 
 export class Product extends NamedEntity {
     
-    Description: string;
-    ImageSource: string;
+    description: string;
+    imageSource: string;
     
     constructor() {
         super();

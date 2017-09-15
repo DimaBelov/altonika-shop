@@ -1,6 +1,6 @@
 export class NamedEntity {
-    Id: number;
-    Name: string;
+    id: number;
+    name: string;
 
     constructor() {}
 }

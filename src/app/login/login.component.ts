@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   login() {
     console.log('user');
     console.log(this.user);
-    this._userService.setCurrentUser(this.user);
-    this._router.navigate([this.returnUrl]);
+    this._userService.auth(this.user)
+      .add(() => this._router.navigate([this.returnUrl]));
   }
 }

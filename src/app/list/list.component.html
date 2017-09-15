@@ -8,14 +8,14 @@
         <!-- <div md-card-avatar>
             <md-icon>face</md-icon>
         </div> -->
-        <md-card-title>{{product.Name}}</md-card-title>
+        <md-card-title>{{product.name}}</md-card-title>
         <!-- <md-card-subtitle>{{currentUser.login}}</md-card-subtitle> -->
       </md-card-header>
-      <img md-card-image class="product-card-img" src="{{product.ImageSource}}" alt="Product{{product.Id}}Img"
+      <img md-card-image class="product-card-img" src="{{product.imageSource}}" alt="Product{{product.id}}Img"
         (click)="openProductCardDialog(product)">
       <md-card-content>
         <p>
-          {{product.Description}}
+          {{product.description}}
         </p>
       </md-card-content>
       <md-card-actions>
