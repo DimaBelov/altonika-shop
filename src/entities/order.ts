@@ -1,7 +1,7 @@
-import { BasketItem } from '@entities/basket-item';
+import { OrderDetail } from '@entities/order-detail';
 
 export class Order {
     id: number;
-    details: Array<BasketItem>;
+    details: Array<OrderDetail>;
     createDate: Date;
 }
