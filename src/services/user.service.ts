@@ -30,7 +30,7 @@ export class UserService {
       console.log(r);
 
       if (r !== null) {
-        localStorage.setItem(this.currentUserKey, JSON.stringify(user));  //r
+        localStorage.setItem(this.currentUserKey, JSON.stringify(r));  //r
         console.log('user authenticated');
         return true;
       } else {

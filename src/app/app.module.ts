@@ -21,6 +21,7 @@ import { ProductService } from '@services/product.service';
 import { BasketComponent } from './basket/basket.component';
 import { BasketService } from '@services/basket.service';
 import { ProductCardDialogComponent } from './product-card-dialog/product-card-dialog.component';
+import { OrderService } from '@services/order.service';
 import { ProductHistoryService } from '@services/product-history.service';
 
 @NgModule({
@@ -43,7 +44,7 @@ import { ProductHistoryService } from '@services/product-history.service';
     HttpModule,
     HttpClientModule
   ],
-  providers: [AuthGuard, UserService, ProductService, BasketService, ProductHistoryService],
+  providers: [AuthGuard, UserService, ProductService, BasketService, OrderService, ProductHistoryService],
   schemas: [ NO_ERRORS_SCHEMA ],
   bootstrap: [AppComponent],
   entryComponents: [ProductCardDialogComponent]

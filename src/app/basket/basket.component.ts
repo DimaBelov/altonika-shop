@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '@entities/product';
 import { BasketItem } from '@entities/basket-item';
 import { BasketService } from '@services/basket.service';
+import { OrderService } from '@services/order.service';
 
 @Component({
   selector: 'app-basket',
@@ -12,7 +13,7 @@ export class BasketComponent implements OnInit {
 
   basket: Array<BasketItem>;
 
-  constructor(private _basketService: BasketService) { }
+  constructor(private _basketService: BasketService, private _orderService: OrderService) { }
 
   ngOnInit() {
     this.refresh();
@@ -45,5 +46,16 @@ export class BasketComponent implements OnInit {
   buy() {
     console.log('buy');
     console.log(this.basket);
+    this._orderService.add(this.basket)
+      .subscribe(
+        r => {
+          console.log('on order add');
+          console.log(r);
+          this.clear();
+        },
+        error => {
+          console.log('on order add error');
+          console.log(error);
+        });
   }
 }
