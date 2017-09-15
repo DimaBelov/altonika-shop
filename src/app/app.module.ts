@@ -23,6 +23,7 @@ import { BasketService } from '@services/basket.service';
 import { ProductCardDialogComponent } from './product-card-dialog/product-card-dialog.component';
 import { OrderService } from '@services/order.service';
 import { ProductHistoryService } from '@services/product-history.service';
+import { OrderSuccessDialogComponent } from './basket/order-success-dialog/order-success-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProductHistoryService } from '@services/product-history.service';
     LoginComponent,
     ListComponent,
     BasketComponent,
-    ProductCardDialogComponent
+    ProductCardDialogComponent,
+    OrderSuccessDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,6 @@ import { ProductHistoryService } from '@services/product-history.service';
   providers: [AuthGuard, UserService, ProductService, BasketService, OrderService, ProductHistoryService],
   schemas: [ NO_ERRORS_SCHEMA ],
   bootstrap: [AppComponent],
-  entryComponents: [ProductCardDialogComponent]
+  entryComponents: [ProductCardDialogComponent, OrderSuccessDialogComponent]
 })
 export class AppModule { }

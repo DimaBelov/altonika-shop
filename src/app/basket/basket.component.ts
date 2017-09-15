@@ -3,6 +3,8 @@ import { Product } from '@entities/product';
 import { BasketItem } from '@entities/basket-item';
 import { BasketService } from '@services/basket.service';
 import { OrderService } from '@services/order.service';
+import { MdDialog, MdDialogConfig } from '@angular/material';
+import { OrderSuccessDialogComponent } from './order-success-dialog/order-success-dialog.component';
 
 @Component({
   selector: 'app-basket',
@@ -13,7 +15,8 @@ export class BasketComponent implements OnInit {
 
   basket: Array<BasketItem>;
 
-  constructor(private _basketService: BasketService, private _orderService: OrderService) { }
+  constructor(private _basketService: BasketService, private _orderService: OrderService,
+    private _dialog: MdDialog) { }
 
   ngOnInit() {
     this.refresh();
@@ -52,6 +55,11 @@ export class BasketComponent implements OnInit {
           console.log('on order add');
           console.log(r);
           this.clear();
+          let dialogRef = this._dialog.open(OrderSuccessDialogComponent);
+          dialogRef.componentInstance.orderId = <number>r;
+          // dialogRef.afterClosed().subscribe(result => {
+          //   this.clear();
+          // });
         },
         error => {
           console.log('on order add error');
