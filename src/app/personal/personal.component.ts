@@ -11,6 +11,7 @@ import { Order } from '@entities/order';
 })
 export class PersonalComponent implements OnInit {
 
+  user: any;
   orders: Array<Order>;
 
   constructor(
@@ -18,7 +19,8 @@ export class PersonalComponent implements OnInit {
     private _userService: UserService) { }
 
   ngOnInit() {
-    this._orderService.getByUser(this._userService.getCurrentUser().id)
+    this.user = this._userService.getCurrentUser();
+    this._orderService.getByUser(this.user.id)
     .subscribe(
       data => {
         console.log('user orders');
