@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MdDialog, MdDialogConfig } from '@angular/material';
+import { MdDialog, MdDialogConfig, MdGridList } from '@angular/material';
 
 import { Product } from '@entities/product';
 import { ProductHistory } from '@entities/product-history';
@@ -38,7 +38,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.refresh();
   }
-
+  
   refresh() {
     this._productService.get().subscribe(data => {
       console.log('data');
@@ -79,5 +79,15 @@ export class ListComponent implements OnInit {
         
       }
     });
+  }
+
+  showBtn(product: Product) {
+    let btn = document.getElementById('btn' + product.id);
+    btn.style.visibility = 'visible';
+  }
+
+  hideBtn(product: Product) {
+    let btn = document.getElementById('btn' + product.id);
+    btn.style.visibility = 'hidden';
   }
 }
