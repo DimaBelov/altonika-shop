@@ -18,5 +18,24 @@
         Создан: {{order.createDate}}
       </md-panel-description>
     </md-expansion-panel-header>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detail of order.details">
+            <td><img class="detail-img" src="{{detail.product.imageSource}}" alt="Product{{detail.product.id}}Img"></td>
+            <td class="text-cell">{{detail.product.name}}</td>
+            <td class="text-cell" style="width: 175px;">
+              {{detail.quantity}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
   </md-expansion-panel>
 </div>
