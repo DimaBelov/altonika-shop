@@ -14,6 +14,11 @@ export class ProductService {
     return this._http.get<Array<Product>>(environment.apiUrl + 'product');
   }
 
+  getById(id: number) {
+    return this._http.get<Product>(environment.apiUrl + 'product/' + id);
+  }
+
+
   // test() {
   //     return [
   //         {Id: 1, Name: 'Product1', Description: 'This is a product', ImageSource: 'https://www.mirsmazok.ru/images/orig_574_1297638132arFz4e8Hrd.jpg'},

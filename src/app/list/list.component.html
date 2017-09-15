@@ -12,13 +12,18 @@
         <!-- <md-card-subtitle>{{currentUser.login}}</md-card-subtitle> -->
       </md-card-header>
       <img md-card-image class="product-card-img" src="{{product.imageSource}}" alt="Product{{product.id}}Img"
-        (click)="openProductCardDialog(product)">
+        (click)="openProductCard(product)">
       <md-card-content>
         <p>
           {{product.description}}
         </p>
       </md-card-content>
       <md-card-actions>
+        <button md-mini-fab color="primary" (click)="openProductCardDialog(product)"
+          mdTooltip="Быстрый просмотр" mdTooltipPosition="below">
+          <md-icon>search</md-icon>
+        </button>
+
           <!-- <button md-button (click)="putInBasket(product)">В корзину</button> -->
           <button md-mini-fab color="primary" class="basket-btn" (click)="putInBasket(product)"
             mdTooltip="Добавить в корзину" mdTooltipPosition="below">

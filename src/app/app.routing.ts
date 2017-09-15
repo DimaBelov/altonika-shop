@@ -4,6 +4,7 @@ import { AuthGuard } from './auth-guard';
 import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
 import { BasketComponent } from './basket/basket.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 const appRoutes: Routes = [
   {
@@ -18,6 +19,11 @@ const appRoutes: Routes = [
   {
     path: 'list',
     component: ListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'card',
+    component: ProductCardComponent,
     canActivate: [AuthGuard]
   },
   {

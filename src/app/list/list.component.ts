@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MdDialog, MdDialogConfig } from '@angular/material';
 
 import { Product } from '@entities/product';
@@ -21,7 +21,11 @@ export class ListComponent implements OnInit {
   searchText: string;
   productHistory: Array<Product>;
 
-  constructor(private _route: ActivatedRoute,
+  productCardRoute = 'card';
+
+  constructor(
+    private _router: Router,
+    private _route: ActivatedRoute,
     private _productService: ProductService, 
     private _basketService: BasketService,
     private _productHistoryService: ProductHistoryService,
@@ -60,6 +64,10 @@ export class ListComponent implements OnInit {
     console.log(product);
 
     this._basketService.putIn(product);
+  }
+
+  openProductCard(product: Product) {
+    this._router.navigate([this.productCardRoute], {queryParams: {'id': product.id}});
   }
 
   openProductCardDialog(product: Product) {
