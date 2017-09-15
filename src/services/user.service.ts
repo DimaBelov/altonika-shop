@@ -12,31 +12,23 @@ export class UserService {
 
   constructor(private _http: HttpClient) { }
 
-  public hasCurrentUser() {
+  hasCurrentUser() {
     return localStorage.getItem(this.currentUserKey) !== null;
   }
 
-  public getCurrentUser() {
+  setCurrentUser(user: any) {
+    localStorage.setItem(this.currentUserKey, JSON.stringify(user));
+  }
+
+  getCurrentUser() {
     return JSON.parse(localStorage.getItem(this.currentUserKey));
   }
 
-  public removeCurrentUser() {
+  removeCurrentUser() {
     localStorage.removeItem(this.currentUserKey);
   }
 
   auth(user: any) {
-    return this._http.post(environment.apiUrl + 'user', user).subscribe(r => {
-      console.log('auth user');
-      console.log(r);
-
-      if (r !== null) {
-        localStorage.setItem(this.currentUserKey, JSON.stringify(r));  //r
-        console.log('user authenticated');
-        return true;
-      } else {
-        console.log('user not found');
-        return false;
-      }
-    });
+    return this._http.post(environment.apiUrl + 'user', user);
   }
 }

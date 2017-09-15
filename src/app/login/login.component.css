@@ -1,0 +1,10 @@
+.auth-failed-text {
+    color: tomato;
+    margin-top: 10px;
+}
+
+.mat-simple-snackbar {
+    color: tomato;
+    margin: auto;
+    width: 75%;
+}
