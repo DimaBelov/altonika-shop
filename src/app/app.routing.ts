@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
 import { BasketComponent } from './basket/basket.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { PersonalComponent } from './personal/personal.component';
 
 const appRoutes: Routes = [
   {
@@ -29,6 +30,11 @@ const appRoutes: Routes = [
   {
     path: 'basket',
     component: BasketComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'personal',
+    component: PersonalComponent,
     canActivate: [AuthGuard]
   }
 ];

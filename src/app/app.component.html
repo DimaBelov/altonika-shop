@@ -12,6 +12,10 @@
         mdTooltip="Корзина" mdTooltipPosition="below">
         <md-icon>shopping_cart</md-icon>
     </button>
+    <button md-icon-button (click)="goto('personal')" *ngIf="hasCurrentUser"
+        mdTooltip="Личный кабинет" mdTooltipPosition="below">
+        <md-icon>person</md-icon>
+    </button>
     <button md-button (click)="logout()" *ngIf="hasCurrentUser">
         Выход
     </button>

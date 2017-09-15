@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '@entities/product';
 import { BasketItem } from '@entities/basket-item';
+import { Order } from '@entities/order';
 import { environment } from '../environments/environment';
 import { UserService } from '@services/user.service';
 
@@ -14,5 +15,9 @@ export class OrderService {
 
   add(basket: Array<BasketItem>) {
     return this._http.post(environment.apiUrl + 'order', {basketItems: basket, user: this._userService.getCurrentUser()});
+  }
+
+  getByUser(userId: number) {
+    return this._http.get<Array<Order>>(environment.apiUrl + 'order/user/' + userId);
   }
 }

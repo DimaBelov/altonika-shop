@@ -25,6 +25,7 @@ import { OrderService } from '@services/order.service';
 import { ProductHistoryService } from '@services/product-history.service';
 import { OrderSuccessDialogComponent } from './basket/order-success-dialog/order-success-dialog.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { PersonalComponent } from './personal/personal.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
     BasketComponent,
     ProductCardDialogComponent,
     OrderSuccessDialogComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    PersonalComponent
   ],
   imports: [
     BrowserModule,
