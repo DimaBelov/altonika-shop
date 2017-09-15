@@ -11,25 +11,31 @@ import { ProductService } from '@services/product.service';
 })
 export class ProductCardComponent implements OnInit {
 
-  product: Product;
+  productId: number;
+  product: Product = new Product();
 
   constructor(private _route: ActivatedRoute,
     private _productService: ProductService) {
     _route.queryParams.subscribe(params => {
-      let id = params['id'];
-      this._productService.getById(id)
-        .subscribe(
-          p => {
-            this.product = p;
-          },
-          error => {
-            console.log('get product by id error');
-            console.log(error);
-          });
+      this.productId = params['id'];
+      this.refresh();
     });
   }
 
+  refresh() {
+    this._productService.getById(this.productId)
+    .subscribe(
+      p => {
+        this.product = p;
+      },
+      error => {
+        console.log('get product by id error');
+        console.log(error);
+      });
+  }
+
   ngOnInit() {
+    // this.refresh();
   }
 
 }

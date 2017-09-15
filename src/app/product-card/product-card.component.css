@@ -1,0 +1,31 @@
+.product-card-container {
+    margin-top: 32px;
+}
+
+.product-card {
+    width: 500px;
+    float: left;
+}
+
+.product-card-img {
+    width: 500px;
+    height: 456px;
+    cursor: pointer;
+}
+
+.mat-dialog-container {
+    padding: 0;
+}
+
+.actions-container {
+    height: 40px;
+}
+
+.basket-btn {
+    float: right;
+}
+
+.product-description-container {
+    padding: 10px;
+    margin-left: 500px;
+}
