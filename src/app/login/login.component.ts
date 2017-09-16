@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewContainerRef  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {MdSnackBar} from '@angular/material';
+import {MdSnackBar } from '@angular/material';
 import { UserService } from '@services/user.service';
 
 @Component({
@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
     private _router: Router, 
     private _route: ActivatedRoute, 
     private _userService: UserService,
-    private _snackBar: MdSnackBar) { }
+    private _snackBar: MdSnackBar,
+    private _viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {
     let returnUrl = this._route.snapshot.queryParams['returnUrl'];
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.authFailed = true;
         console.log('user not found');
-        this._snackBar.open('Неправильный логин или пароль', null, {});
+        this._snackBar.open('Неправильный логин или пароль', null, {viewContainerRef: this._viewContainerRef});
       }
     });
   }
