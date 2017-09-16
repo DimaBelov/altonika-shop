@@ -1,5 +1,5 @@
-<div>
-  <p *ngIf="filteredProducts && filteredProducts.length == 0">Извините, ничего не найдено</p>
+<div class="component-panel">
+  <p *ngIf="filteredProducts && filteredProducts.length == 0" class="no-product-text">Извините, ничего не найдено</p>
   <md-grid-list cols="3" rowHeight="500px" #grid>
     <md-grid-tile
         *ngFor="let product of filteredProducts"
