@@ -8,3 +8,7 @@
     margin: auto;
     width: 75%;
 }
+
+.simple-notification-wrapper {
+    top: 20px;
+}
