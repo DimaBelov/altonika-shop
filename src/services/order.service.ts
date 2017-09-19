@@ -14,7 +14,10 @@ export class OrderService {
   constructor(private _http: HttpClient, private _userService: UserService) { }
 
   add(basket: Array<BasketItem>) {
-    return this._http.post(environment.apiUrl + 'order', {basketItems: basket, user: this._userService.getCurrentUser()});
+    let order = {details: basket, userId: this._userService.getCurrentUser().id};
+    console.log('new order');
+    console.log(order);
+    return this._http.post(environment.apiUrl + 'order', order);
   }
 
   getByUser(userId: number) {

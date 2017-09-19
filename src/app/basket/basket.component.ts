@@ -5,6 +5,7 @@ import { BasketService } from '@services/basket.service';
 import { OrderService } from '@services/order.service';
 import { MdDialog, MdDialogConfig } from '@angular/material';
 import { OrderSuccessDialogComponent } from './order-success-dialog/order-success-dialog.component';
+import { ProductCardDialogComponent } from '../product-card-dialog/product-card-dialog.component';
 
 @Component({
   selector: 'app-basket',
@@ -67,5 +68,17 @@ export class BasketComponent implements OnInit {
           console.log('on order add error');
           console.log(error);
         });
+  }
+
+  openProductCardDialog(product: Product) {
+    let dialogConfig = new MdDialogConfig();
+    let dialogRef = this._dialog.open(ProductCardDialogComponent, dialogConfig);
+    dialogRef.componentInstance.product = product;
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        
+      }
+    });
   }
 }

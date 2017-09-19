@@ -33,7 +33,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let detail of order.details">
-                  <td><img class="detail-img" src="{{detail.product.imageSource}}" alt="Product{{detail.product.id}}Img"></td>
+                  <td><img class="detail-img" src="{{detail.product.imageSource}}" alt="Product{{detail.product.id}}Img" (click)="openProductCardDialog(detail.product)"></td>
                   <td class="text-cell">{{detail.product.name}}</td>
                   <td class="text-cell" style="width: 175px;">
                     {{detail.quantity}}
