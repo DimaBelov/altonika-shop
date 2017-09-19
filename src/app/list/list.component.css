@@ -5,6 +5,7 @@
 .product-card-img-container {
     /* display: inline-block;
     position: relative; */
+    /* width: 250px; */
 }
 
 .show-btn {
@@ -44,4 +45,8 @@
     height: 500px;
     line-height: 500px;
     text-align: center;
+}
+
+.product-title {
+    margin: 0;
 }
