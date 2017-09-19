@@ -50,3 +50,8 @@
 .product-title {
     margin: 0;
 }
+
+.history-product-title {
+    margin: 0;
+    word-wrap: normal;
+}
