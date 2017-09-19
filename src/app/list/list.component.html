@@ -1,6 +1,6 @@
 <div class="component-panel">
   <p *ngIf="filteredProducts && filteredProducts.length == 0" class="no-product-text">Извините, ничего не найдено</p>
-  <md-grid-list cols="4" rowHeight="350px" #grid>
+  <md-grid-list cols="4" rowHeight="345px" #grid>
     <md-grid-tile
         *ngFor="let product of filteredProducts"
         [colspan]="1"
