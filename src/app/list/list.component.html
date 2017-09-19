@@ -9,19 +9,22 @@
         <md-card-header>
           <md-card-title>{{product.name}}</md-card-title>
         </md-card-header>
-        <!-- <div class="product-card-img-container" (mouseenter)="showBtn(product)" (mouseleave)="hideBtn(product)">
+        <div class="product-card-img-container" (mouseenter)="showBtn(product)" (mouseleave)="hideBtn(product)">
           <img md-card-image class="product-card-img" src="{{product.imageSource}}" alt="Product{{product.id}}Img" (click)="openProductCard(product)">
-          <button md-mini-fab id="btn{{product.id}}" color="primary" class="show-btn" (click)="openProductCardDialog(product)">
+          <!-- <button md-mini-fab id="btn{{product.id}}" color="primary" class="show-btn" (click)="openProductCardDialog(product)">
             <md-icon>search</md-icon>
+          </button> -->
+          <button md-raised-button id="btn{{product.id}}" class="show-btn" (click)="openProductCardDialog(product)">
+            Быстрый просмотр
           </button>
-        </div> -->
-        <img md-card-image class="product-card-img" src="{{product.imageSource}}" alt="Product{{product.id}}Img" (click)="openProductCard(product)">
+        </div>
+        <!-- <img md-card-image class="product-card-img" src="{{product.imageSource}}" alt="Product{{product.id}}Img" (click)="openProductCard(product)">
         <md-card-actions>
           <button md-mini-fab color="primary" (click)="openProductCardDialog(product)"
             mdTooltip="Быстрый просмотр" mdTooltipPosition="below">
             <md-icon>search</md-icon>
           </button>
-        </md-card-actions>
+        </md-card-actions> -->
       </md-card>
     </md-grid-tile>
   </md-grid-list>

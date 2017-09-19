@@ -9,9 +9,14 @@
 
 .show-btn {
     position: absolute;
-    top: calc(50% - 12px); /*12px половина стороны md-icon-button*/
-    left: calc(50% - 12px);
+    top: calc(50% - 18px); /*12px половина стороны md-icon-button;*/ /*78px и 18px половина стороны md-button*/
+    left: calc(50% - 78px);
     visibility: hidden;
+    background-color: rgba(255, 255, 255, 0.35)
+}
+
+.show-btn:hover {
+    background-color: rgba(255, 255, 255, 0.75)
 }
 
 .product-card-img {

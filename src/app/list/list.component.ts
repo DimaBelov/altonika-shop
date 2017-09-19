@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MdDialog, MdDialogConfig, MdGridList } from '@angular/material';
+import { MdDialog, MdGridList } from '@angular/material';
 
 import { Product } from '@entities/product';
 import { ProductHistory } from '@entities/product-history';
@@ -70,15 +70,8 @@ export class ListComponent implements OnInit {
   }
 
   openProductCardDialog(product: Product) {
-    let dialogConfig = new MdDialogConfig();
-    let dialogRef = this._dialog.open(ProductCardDialogComponent, dialogConfig);
+    let dialogRef = this._dialog.open(ProductCardDialogComponent);
     dialogRef.componentInstance.product = product;
-    
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        
-      }
-    });
   }
 
   showBtn(product: Product) {

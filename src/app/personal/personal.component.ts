@@ -41,11 +41,5 @@ export class PersonalComponent implements OnInit {
   openProductCardDialog(product: Product) {
     let dialogRef = this._dialog.open(ProductCardDialogComponent);
     dialogRef.componentInstance.product = product;
-    
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        
-      }
-    });
   }
 }
