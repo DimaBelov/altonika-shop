@@ -1,9 +1,9 @@
-.product-card {
+.product-card-dlg {
     width: 500px;
     float: left;
 }
 
-.product-card-img {
+.product-card-dlg-img {
     width: 500px;
     height: 500px;
     cursor: pointer;
