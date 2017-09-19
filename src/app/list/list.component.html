@@ -32,15 +32,19 @@
     </md-grid-tile>
   </md-grid-list>
   
-  <!-- <md-grid-list cols="5" rowHeight="500px">
-    <md-grid-tile
-        *ngFor="let product of productHistory"
-        [colspan]="1"
-        [rowspan]="1">
-      <md-card class="product-history-card">
-        <img md-card-image class="product-history-card-img" src="{{item.ImageSource}}" alt="Product{{product.Id}}Img"
-          (click)="openProductCardDialog(product)">
-      </md-card>
-    </md-grid-tile>
-  </md-grid-list> -->
+  <div>
+    <label>Недавно, Вы смотрели:</label>
+    <md-grid-list cols="10" rowHeight="130px">
+      <md-grid-tile
+          *ngFor="let product of productHistory"
+          [colspan]="1"
+          [rowspan]="1">
+        <md-card class="product-history-card">
+          <img md-card-image class="product-history-card-img" src="{{product.imageSource}}" alt="Product{{product.id}}Img"
+            (click)="openProductCardDialog(product)">
+        </md-card>
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
+
 </div>

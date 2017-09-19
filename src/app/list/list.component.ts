@@ -52,7 +52,7 @@ export class ListComponent implements OnInit {
         this.filteredProducts = this.products.filter(p => p.name.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1);
       }
   
-      this.productHistory = this._productHistoryService.getN(5);
+      this.productHistory = this._productHistoryService.getN(10);
       console.log('productHistory');
       console.log(this.productHistory);
     });
