@@ -1,5 +1,6 @@
 .product-card {
     width: 500px;
+    float: left;
 }
 
 .product-card-img {
@@ -18,4 +19,10 @@
 
 .basket-btn {
     float: right;
+}
+
+.product-description-container {
+    padding: 10px;
+    margin-left: 500px;
+    min-width: 350px;
 }
