@@ -11,7 +11,8 @@
     "e2e": "ng e2e",
     "restore-dev": "npm install --only=dev",
     "restore-prod": "npm install --only=production",
-    "restore": "npm run restore-dev && npm run restore-prod"
+    "restore": "npm run restore-dev && npm run restore-prod",
+    "themes": "npm-sass ./src/themes/scss/custom-theme.scss > ./src/themes/css/custom-theme.css"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +36,7 @@
     "jquery": "^3.2.1",
     "ng2-linq": "^1.0.0",
     "ngx-accordion": "0.0.17",
+    "npm-sass": "^2.2.1",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },
