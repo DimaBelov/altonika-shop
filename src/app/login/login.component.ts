@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {MdSnackBar } from '@angular/material';
 import { NotificationsService } from 'angular2-notifications';
 import { UserService } from '@services/user.service';
+import { User } from '@entities/user';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +16,7 @@ export class LoginComponent implements OnInit {
   authFailed: boolean;
   returnUrl: string;
   
-  public user: object = {
-    login: null,
-    password: null
-  };
+  public user: User = new User();
 
   constructor(
     private _router: Router, 
