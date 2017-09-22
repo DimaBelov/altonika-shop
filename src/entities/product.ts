@@ -10,13 +10,4 @@ export class Product extends NamedEntity {
     constructor() {
         super();
     }
-
-    // public getBasketItem() {
-    //     let item = new BasketItem();
-    //     item.Id = this.Id;
-    //     item.Name = this.Name;
-    //     item.Description = this.Description;
-    //     item.Quantity = 1;
-    //     return item;
-    // }
 }
