@@ -10,7 +10,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of basket">
-        <td><img class="basket-item-img" src="{{item.product.imageSource}}" alt="Product{{item.product.id}}Img" (click)="openProductCardDialog(item.product)"></td>
+        <td>
+          <img class="basket-item-img" 
+            src="{{item.product.imageSource}}" 
+            alt="Изображение не найдено({{item.product.id}})"
+            onError="this.src = 'img-not-found.jpg'"
+            (click)="openProductCardDialog(item.product)">
+        </td>
         <td class="text-cell">{{item.product.name}}</td>
         <td class="text-cell" style="width: 175px;">
             <button md-icon-button (click)="dec(item)">

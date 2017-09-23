@@ -6,7 +6,10 @@
     <md-card-title>{{product.name}}</md-card-title>
     <!-- <md-card-subtitle>{{currentUser.login}}</md-card-subtitle> -->
   </md-card-header>
-  <img md-card-image class="product-card-dlg-img" src="{{product.imageSource}}" alt="Product{{product.id}}Img"
+  <img md-card-image class="product-card-dlg-img" 
+    src="{{product.imageSource}}" 
+    alt="Изображение не найдено({{product.id}})"
+    onError="this.src = 'img-not-found.jpg'"
     (click)="openProductCard(product)">
   <md-card-content>
     <p>

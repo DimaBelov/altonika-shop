@@ -8,7 +8,11 @@
       <md-card class="product-card">
 
         <div class="product-card-img-container" (mouseenter)="showBtn(product)" (mouseleave)="hideBtn(product)">
-          <img md-card-image class="product-card-img" src="{{product.imageSource}}" alt="Product{{product.id}}Img" (click)="openProductCard(product)">
+          <img md-card-image class="product-card-img" 
+            src="{{product.imageSource}}" 
+            alt="Изображение не найдено({{product.id}})"
+            onError="this.src = 'img-not-found.jpg'"
+            (click)="openProductCard(product)">
           <!-- <button md-mini-fab id="btn{{product.id}}" color="primary" class="show-btn" (click)="openProductCardDialog(product)">
             <md-icon>search</md-icon>
           </button> -->
@@ -21,7 +25,7 @@
           <md-card-title class="product-title">{{product.name}}</md-card-title>
         </md-card-header>
 
-        <!-- <img md-card-image class="product-card-img" src="{{product.imageSource}}" alt="Product{{product.id}}Img" (click)="openProductCard(product)">
+        <!-- <img md-card-image class="product-card-img" src="{{product.imageSource}}" alt="Изображение не найдено({{product.id}})" (click)="openProductCard(product)">
         <md-card-actions>
           <button md-mini-fab color="primary" (click)="openProductCardDialog(product)"
             mdTooltip="Быстрый просмотр" mdTooltipPosition="below">
@@ -40,7 +44,7 @@
           [colspan]="1"
           [rowspan]="1">
         <md-card class="product-history-card">
-          <img md-card-image class="product-history-card-img" src="{{product.imageSource}}" alt="Product{{product.id}}Img"
+          <img md-card-image class="product-history-card-img" src="{{product.imageSource}}" alt="Изображение не найдено({{product.id}})"
             (click)="openProductCardDialog(product)">
         </md-card>
       </md-grid-tile>
