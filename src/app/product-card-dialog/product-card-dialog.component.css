@@ -1,11 +1,11 @@
 .product-card-dlg {
-    width: 500px;
+    width: 400px;
     float: left;
 }
 
 .product-card-dlg-img {
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     cursor: pointer;
 }
 
@@ -23,6 +23,6 @@
 
 .product-description-container {
     padding: 10px;
-    margin-left: 500px;
+    margin-left: 400px;
     min-width: 350px;
 }

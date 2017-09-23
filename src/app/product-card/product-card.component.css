@@ -1,11 +1,11 @@
 .product-card {
-    width: 500px;
+    width: 400px;
     float: left;
 }
 
 .product-card-img {
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
 }
 
 .mat-dialog-container {
@@ -22,5 +22,5 @@
 
 .product-description-container {
     padding: 10px;
-    margin-left: 500px;
+    margin-left: 400px;
 }
