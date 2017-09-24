@@ -49,9 +49,29 @@
 
 .product-title {
     margin: 0;
+    font-weight: bold;
 }
 
 .history-product-title {
     margin: 0;
     word-wrap: normal;
+}
+
+.product-title-link {
+    font-size: 14px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-weight: bold;
+    color: black;
+}
+
+.product-title-link:hover {
+    text-decoration: none;
+}
+
+.product-title-link:active {
+    
+}
+
+.product-title-link:visited {
+    
 }

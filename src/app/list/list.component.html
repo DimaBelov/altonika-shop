@@ -13,30 +13,19 @@
             alt="Изображение не найдено({{product.id}})"
             onError="this.src = 'img-not-found.jpg'"
             (click)="openProductCard(product)">
-          <!-- <button md-mini-fab id="btn{{product.id}}" color="primary" class="show-btn" (click)="openProductCardDialog(product)">
-            <md-icon>search</md-icon>
-          </button> -->
           <button md-raised-button id="btn{{product.id}}" class="show-btn" (click)="openProductCardDialog(product)">
             Быстрый просмотр
           </button>
         </div>
 
         <md-card-header>
-          <md-card-title class="product-title">{{product.name}}</md-card-title>
+          <!-- <md-card-title class="product-title">{{product.name}}</md-card-title> -->
+          <a class="product-title-link" href='card?id={{product.id}}'>{{product.name}}</a>
         </md-card-header>
-
-        <!-- <img md-card-image class="product-card-img" 
-          src="{{product.imageSource}}" 
-          alt="Изображение не найдено({{product.id}})" 
-          (click)="openProductCard(product)"> -->
         <md-card-actions>
           <button md-raised-button color="primary" class="basket-btn" (click)="putInBasket(product)">
             В корзину
           </button>
-          <!-- <button md-mini-fab color="primary" (click)="openProductCardDialog(product)"
-            mdTooltip="Быстрый просмотр" mdTooltipPosition="below">
-            <md-icon>search</md-icon>
-          </button> -->
         </md-card-actions>
       </md-card>
     </md-grid-tile>
