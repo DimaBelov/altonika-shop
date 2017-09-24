@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 // import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
@@ -8,6 +8,8 @@ import { ProductHistoryService } from '@services/product-history.service';
 
 @Injectable()
 export class BasketService {
+
+  @Output() onItemAdded = new EventEmitter();
 
   private basketKey = 'basket';
 
@@ -57,6 +59,8 @@ export class BasketService {
 
       this.set(basket);
       this._productHistoryService.add(product);
+
+      this.onItemAdded.emit(this.totalCount());
   }
 
   dec(item: BasketItem) {
@@ -77,6 +81,7 @@ export class BasketService {
     });
 
     this.set(basket);
+    this.onItemAdded.emit(this.totalCount());
   }
 
   inc(item: BasketItem) {
@@ -89,6 +94,7 @@ export class BasketService {
       }
     });
     this.set(basket);
+    this.onItemAdded.emit(this.totalCount());
   }
 
   remove(item: BasketItem) {
@@ -104,11 +110,22 @@ export class BasketService {
     });
 
     this.set(basket);
+    this.onItemAdded.emit(this.totalCount());
   }
 
   clear() {
     localStorage.removeItem(this.basketKey);
     this.init();
+    this.onItemAdded.emit(this.totalCount());
+  }
+
+  totalCount() {
+    let basket = this.get();
+    let total = 0;
+    basket.forEach(i => {
+      total += i.quantity;
+    });
+    return total;
   }
 
   private set(basket: Array<BasketItem>) {

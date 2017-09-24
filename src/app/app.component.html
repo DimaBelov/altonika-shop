@@ -1,4 +1,4 @@
-<md-toolbar color="primary">
+<md-toolbar color="primary" class="fixed-top">
     <button md-icon-button (click)="goto('/')">
         <md-icon>home</md-icon>
     </button>
@@ -11,6 +11,7 @@
     <button md-icon-button (click)="goto('basket')" *ngIf="hasCurrentUser"
         mdTooltip="Корзина" mdTooltipPosition="below">
         <md-icon>shopping_cart</md-icon>
+        {{basketTotal}}
     </button>
     <button md-icon-button (click)="goto('personal')" *ngIf="hasCurrentUser"
         mdTooltip="Личный кабинет" mdTooltipPosition="below">
@@ -21,7 +22,7 @@
     </button>
 </md-toolbar>
 
-<div class="container">
+<div class="container outlet-container">
     <router-outlet></router-outlet>
 </div>
 

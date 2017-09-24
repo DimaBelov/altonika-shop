@@ -16,6 +16,8 @@ import { ProductCardDialogComponent } from '../product-card-dialog/product-card-
 })
 export class ListComponent implements OnInit {
 
+  static lastSearch: string;
+
   products: Array<Product>;
   filteredProducts: Array<Product>;
   searchText: string;
@@ -31,6 +33,7 @@ export class ListComponent implements OnInit {
     private _dialog: MdDialog) {
       _route.queryParams.subscribe(params => {
         this.searchText = params['search'];
+        ListComponent.lastSearch = this.searchText;
         this.refresh();
       });
     }

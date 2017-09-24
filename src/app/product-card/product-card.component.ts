@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Product } from '@entities/product';
 import { ProductService } from '@services/product.service';
 import { BasketService } from '@services/basket.service';
+import { ListComponent } from '../list/list.component';
 
 @Component({
   selector: 'app-product-card',
@@ -17,6 +18,7 @@ export class ProductCardComponent implements OnInit {
 
   constructor(
     private _route: ActivatedRoute,
+    private _router: Router,
     private _productService: ProductService,
     private _basketService: BasketService) {
     _route.queryParams.subscribe(params => {
@@ -46,5 +48,16 @@ export class ProductCardComponent implements OnInit {
     console.log(product);
 
     this._basketService.putIn(product);
+  }
+
+  back() {
+    console.log('back. lastSearch:');
+    console.log(ListComponent.lastSearch);
+
+    if (ListComponent.lastSearch) {
+      this._router.navigate(['/list'], { queryParams: {'search': ListComponent.lastSearch } });
+    } else {
+      this._router.navigate(['/list']);
+    }
   }
 }

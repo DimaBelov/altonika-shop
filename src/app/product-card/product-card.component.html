@@ -1,28 +1,20 @@
 <div class="component-panel">
+  <div>
+    <button md-icon-button (click)="back()">
+      <md-icon>keyboard_arrow_left</md-icon>
+      Назад
+    </button>
+  </div>
   <md-card class="product-card">
       <md-card-header>
-        <!-- <div md-card-avatar>
-            <md-icon>face</md-icon>
-        </div> -->
         <md-card-title>{{product.name}}</md-card-title>
-        <!-- <md-card-subtitle>{{currentUser.login}}</md-card-subtitle> -->
       </md-card-header>
       <img md-card-image class="product-card-img" 
         src="{{product.imageSource}}" 
         alt="Изображение не найдено({{product.id}})"
         onError="this.src = 'img-not-found.jpg'">
-      <!-- <md-card-content>
-        <p>
-          {{product.description}}
-        </p>
-      </md-card-content> -->
       <md-card-actions>
-          <!-- <button md-button (click)="putInBasket(product)">В корзину</button> -->
           <div class="actions-container">
-              <!-- <button md-mini-fab color="primary" class="basket-btn" (click)="putInBasket(product)"
-                mdTooltip="Добавить в корзину" mdTooltipPosition="below">
-                <md-icon>add_shopping_cart</md-icon>
-              </button> -->
               <button md-raised-button color="primary" class="basket-btn" (click)="putInBasket(product)">
                 В корзину
               </button>
