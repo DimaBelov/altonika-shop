@@ -6,6 +6,7 @@ export class Product extends NamedEntity {
     price: number;
     description: string;
     imageSource: string;
+    isDeleted: boolean;
     
     constructor() {
         super();

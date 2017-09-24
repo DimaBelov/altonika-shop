@@ -23,9 +23,12 @@
           <a class="product-title-link" href='card?id={{product.id}}'>{{product.name}}</a>
         </md-card-header>
         <md-card-actions>
-          <button md-raised-button color="primary" class="basket-btn" (click)="putInBasket(product)">
+          <button md-raised-button color="primary" class="basket-btn" 
+            (click)="putInBasket(product)"
+            *ngIf="!product.isDeleted">
             В корзину
           </button>
+          <p *ngIf="product.isDeleted" class="is-deleted-text">Нет в наличии</p>
         </md-card-actions>
       </md-card>
     </md-grid-tile>

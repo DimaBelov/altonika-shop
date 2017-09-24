@@ -75,3 +75,7 @@
 .product-title-link:visited {
     
 }
+
+.is-deleted-text {
+    float: right;
+}

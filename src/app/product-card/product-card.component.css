@@ -28,3 +28,7 @@
 .product-title {
     font-weight: bold;
 }
+
+.is-deleted-text {
+    float: right;
+}
