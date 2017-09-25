@@ -2,6 +2,12 @@
     width: 250px;
 }
 
+/* .product-card {
+    width: 270px;
+    padding: 10px;
+    border: 1px solid lightgray;
+} */
+
 .product-card-img-container {
     /* display: inline-block;
     position: relative; */
@@ -78,4 +84,7 @@
 
 .is-deleted-text {
     float: right;
+    height: 35.5px;
+    line-height: 35.5px;
+    margin: 0;
 }
