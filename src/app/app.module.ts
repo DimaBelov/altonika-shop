@@ -1,6 +1,6 @@
+import { NgModule, NO_ERRORS_SCHEMA, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SimpleNotificationsModule } from 'angular2-notifications';
@@ -26,6 +26,7 @@ import { ProductHistoryService } from '@services/product-history.service';
 import { OrderSuccessDialogComponent } from './basket/order-success-dialog/order-success-dialog.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PersonalComponent } from './personal/personal.component';
+import { GlobalErrorHandler } from '@services/global.error.handler';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,18 @@ import { PersonalComponent } from './personal/personal.component';
     HttpModule,
     HttpClientModule
   ],
-  providers: [AuthGuard, UserService, ProductService, BasketService, OrderService, ProductHistoryService],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler
+    },
+    AuthGuard, 
+    UserService, 
+    ProductService, 
+    BasketService, 
+    OrderService, 
+    ProductHistoryService
+  ],
   schemas: [ NO_ERRORS_SCHEMA ],
   bootstrap: [AppComponent],
   entryComponents: [ProductCardDialogComponent, OrderSuccessDialogComponent]
