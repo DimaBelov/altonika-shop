@@ -57,8 +57,7 @@
 }
 
 .product-title {
-    margin: 0;
-    font-weight: bold;
+    overflow: hidden;
 }
 
 .history-product-title {
@@ -75,6 +74,7 @@
 
 .product-title-link:hover {
     text-decoration: none;
+    color: black;
 }
 
 .product-title-link:active {
