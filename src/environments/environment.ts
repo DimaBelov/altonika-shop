@@ -6,6 +6,6 @@
 export const environment = {
   production: false,
   apiUrl: 
-     //'http://localhost:53519/api/v1/'
-    'http://localhost:9092/api/v1/'
+     'http://localhost:53519/api/v1/'
+    // 'http://localhost:9092/api/v1/'
 };
