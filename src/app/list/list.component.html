@@ -1,6 +1,6 @@
 <div class="component-panel">
   <p *ngIf="filteredProducts && filteredProducts.length == 0" class="no-product-text">Извините, ничего не найдено</p>
-  <md-grid-list cols="4" rowHeight="340px" #grid>
+  <md-grid-list cols="4" rowHeight="350px" #grid>
     <md-grid-tile
         *ngFor="let product of filteredProducts"
         [colspan]="1"
@@ -44,7 +44,8 @@
           </button>
         </div>
         <div class="product-title">
-          <a class="product-title-link" href='card?id={{product.id}}'>
+          <a class="product-title-link" href='card?id={{product.id}}'
+            mdTooltip="{{product.name}}" mdTooltipPosition="above">
           {{product.name}}
         </a>
         </div>
