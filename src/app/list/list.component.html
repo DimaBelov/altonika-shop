@@ -63,4 +63,10 @@
     </md-grid-tile>
   </md-grid-list>
 
+  <md-paginator 
+    [length]="filteredProducts.length"
+    [pageSize]="paggingOptions.pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="paggingChange($event)">
+  </md-paginator>
 </div>
