@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MdDialog, MdGridList } from '@angular/material';
 
@@ -12,7 +12,8 @@ import { ProductCardDialogComponent } from '../product-card-dialog/product-card-
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ListComponent implements OnInit {
 

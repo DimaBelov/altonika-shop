@@ -1,12 +1,12 @@
 <div class="component-panel">
   <p *ngIf="filteredProducts && filteredProducts.length == 0" class="no-product-text">Извините, ничего не найдено</p>
-  <md-grid-list cols="4" rowHeight="390px" #grid>
+  <md-grid-list cols="4" rowHeight="340px" #grid>
     <md-grid-tile
         *ngFor="let product of filteredProducts"
         [colspan]="1"
         [rowspan]="1">
 
-      <md-card class="product-card">
+      <!-- <md-card class="product-card">
 
         <div class="product-card-img-container" (mouseenter)="showBtn(product)" (mouseleave)="hideBtn(product)">
           <img md-card-image class="product-card-img" 
@@ -30,11 +30,11 @@
           </button>
           <p *ngIf="product.isDeleted" class="is-deleted-text">Нет в наличии</p>
         </md-card-actions>
-      </md-card>
+      </md-card> -->
 
-      <!-- <div class="product-card">
+      <div class="product-card">
         <div class="product-card-img-container" (mouseenter)="showBtn(product)" (mouseleave)="hideBtn(product)">
-          <img md-card-image class="product-card-img" 
+          <img class="product-card-img" 
             src="{{product.imageSource}}" 
             alt="Изображение не найдено({{product.id}})"
             onError="this.src = 'img-not-found.jpg'"
@@ -54,7 +54,7 @@
           </button>
           <p *ngIf="product.isDeleted" class="is-deleted-text">Нет в наличии</p>
         </div>
-      </div> -->
+      </div>
 
 
     </md-grid-tile>
