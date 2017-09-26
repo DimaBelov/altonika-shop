@@ -23,7 +23,8 @@ export class ListComponent implements OnInit {
 
   static paggingOptions: PaggingOptions = {
     pageNumber: 1,
-    pageSize: 12
+    pageSize: 12,
+    searchText: ''
   };
 
   products: Array<Product>;
@@ -47,8 +48,8 @@ export class ListComponent implements OnInit {
       this.paggingResult = new PaggingResult<Product>();
 
       _route.queryParams.subscribe(params => {
-        this.searchText = params['search'];
-        ListComponent.lastSearch = this.searchText;
+        ListComponent.paggingOptions.searchText = params['search'];
+        ListComponent.lastSearch = ListComponent.paggingOptions.searchText;
         this.refresh();
       });
     }
@@ -65,13 +66,6 @@ export class ListComponent implements OnInit {
 
         this.paggingResult = data; 
         this.products = data.items;
-
-        // if (!this.searchText) {
-        //   this.filteredProducts = this.products;
-        // } else {
-        //   this.filteredProducts = this.products.filter(p => p.name.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1);
-        // }
-    
         this.filteredProducts = this.products;
 
         this.productHistory = this._productHistoryService.getN(10);

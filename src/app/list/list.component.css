@@ -111,12 +111,20 @@
     float: left;
 }
 
-.paginator p {
+.paginator p.page-number {
     float: left;
     height: 40px;
     line-height: 40px;
     width: 40px;
     text-align: center;
+}
+
+.paginator p.page-count {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0 5px 0 5px;
 }
 
 .paginator md-select {
@@ -129,6 +137,18 @@
 .paginator .next-prev-panel {
     width: 120px;
     margin: auto;
+}
+
+.paginator md-chip-list {
+    float: left;
+}
+
+.paginator .mat-chip-list-wrapper{
+    height: 40px;
+}
+
+.paginator .mat-chip {
+    margin-top: 5px;
 }
 
 .history-product-title {
