@@ -8,6 +8,7 @@
  body {
      /* min-height: 2000px; */
      /* padding-top: 70px; */
+     margin-bottom: 32px !important;
  }
  
  .icon-bar {
@@ -77,4 +78,7 @@ md-toolbar-row a:focus {
 
 .footer {
     margin: 32px 0 32px 0;
+    /* bottom: 0;
+    position: fixed;
+    width: 100%; */
 }

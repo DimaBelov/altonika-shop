@@ -38,11 +38,19 @@
 
   <div class="paginator bottom">
 
+    <md-chip-list>
+      <md-chip>
+        {{paggingOptionsStatic.pageSize * paggingOptionsStatic.pageNumber <= paggingResult.totalCount ? paggingOptionsStatic.pageSize * paggingOptionsStatic.pageNumber : paggingResult.totalCount}}
+        из
+        {{paggingResult.totalCount}}
+      </md-chip>
+    </md-chip-list>
+
     <div class="next-prev-panel">
       <button md-icon-button (click)="prevPage()" [disabled]="!paggingResult.canPrev">
         <md-icon>navigate_before</md-icon>
       </button>
-
+      
       <md-chip-list class="page-number">
         <md-chip class="page-number-chip">
             {{paggingOptionsStatic.pageNumber}}
@@ -65,6 +73,7 @@
         <md-icon>navigate_next</md-icon>
       </button>
     </div>
+    
     <md-select [(ngModel)]="paggingOptionsStatic.pageSize" (ngModelChange)="pageSizeChange()">
       <md-option *ngFor="let size of pageSizeOptions" [value]="size">
         {{ size }}
