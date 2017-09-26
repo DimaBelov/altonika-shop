@@ -100,6 +100,11 @@ export class ListComponent implements OnInit {
     this.paggingChange();
   }
 
+  selectPage(n: number) {
+    ListComponent.paggingOptions.pageNumber = n;
+    this.paggingChange();
+  }
+
   putInBasket(product: Product) {
     console.log('putInBasket');
     console.log(product);

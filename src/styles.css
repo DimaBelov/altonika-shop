@@ -59,7 +59,7 @@ md-toolbar-row a:focus {
 }
  
  .component-panel {
-     margin-top: 32px;
+    margin-top: 32px;
  }
 
  .rotate-90 {
@@ -68,4 +68,13 @@ md-toolbar-row a:focus {
     -o-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
+}
+
+.footer-text {
+    width: 80px;
+    margin: auto;
+}
+
+.footer {
+    margin: 32px 0 32px 0;
 }

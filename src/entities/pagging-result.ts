@@ -3,4 +3,5 @@ export class PaggingResult<T> {
     totalCount: number;
     canNext: boolean;
     canPrev: boolean;
+    pageNumbers: Int32Array;
 }
