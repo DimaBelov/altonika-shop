@@ -21,6 +21,11 @@ export class ListComponent implements OnInit {
 
   static lastSearch: string;
 
+  static paggingOptions: PaggingOptions = {
+    pageNumber: 1,
+    pageSize: 12
+  };
+
   products: Array<Product>;
   filteredProducts: Array<Product>;
   searchText: string;
@@ -28,10 +33,6 @@ export class ListComponent implements OnInit {
   productCardRoute = 'card';
 
   pageSizeOptions = [12, 24, 36, 48];
-  paggingOptions: PaggingOptions = {
-    pageNumber: 1,
-    pageSize: 12
-  };
   paggingResult: PaggingResult<Product>;
 
   constructor(
@@ -57,7 +58,7 @@ export class ListComponent implements OnInit {
   }
   
   refresh() {
-    this._productService.get(this.paggingOptions)
+    this._productService.get(ListComponent.paggingOptions)
       .subscribe(data => {
         console.log('data');
         console.log(data);
@@ -79,25 +80,29 @@ export class ListComponent implements OnInit {
       });
   }
 
+  get paggingOptionsStatic () {
+    return ListComponent.paggingOptions;
+  }
+
   paggingChange() {
     console.log('paggingChange');
-    console.log(this.paggingOptions);
+    console.log(ListComponent.paggingOptions);
 
     this.refresh();
   }
 
   prevPage() {
-    this.paggingOptions.pageNumber -= 1;
+    ListComponent.paggingOptions.pageNumber -= 1;
     this.paggingChange();
   }
 
   nextPage() {
-    this.paggingOptions.pageNumber += 1;
+    ListComponent.paggingOptions.pageNumber += 1;
     this.paggingChange();
   }
 
   pageSizeChange () {
-    this.paggingOptions.pageNumber = 1;
+    ListComponent.paggingOptions.pageNumber = 1;
     this.paggingChange();
   }
 

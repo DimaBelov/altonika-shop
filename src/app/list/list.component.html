@@ -41,12 +41,12 @@
       <button md-icon-button (click)="prevPage()" [disabled]="!paggingResult.canPrev">
         <md-icon>navigate_before</md-icon>
       </button>
-      <p>{{paggingOptions.pageNumber}}</p>
+      <p>{{paggingOptionsStatic.pageNumber}}</p>
       <button md-icon-button (click)="nextPage()" [disabled]="!paggingResult.canNext">
         <md-icon>navigate_next</md-icon>
       </button>
     </div>
-    <md-select [(ngModel)]="paggingOptions.pageSize" (ngModelChange)="pageSizeChange()">
+    <md-select [(ngModel)]="paggingOptionsStatic.pageSize" (ngModelChange)="pageSizeChange()">
       <md-option *ngFor="let size of pageSizeOptions" [value]="size">
         {{ size }}
       </md-option>
