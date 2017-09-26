@@ -7,7 +7,13 @@
         [colspan]="1"
         [rowspan]="1">
       <div class="product-card">
-        <div class="product-card-img-container" (mouseenter)="showBtn(product)" (mouseleave)="hideBtn(product)">
+        <div class="product-title">
+          <a class="product-title-link" href='card?id={{product.id}}'
+            mdTooltip="{{product.name}}" mdTooltipPosition="above">
+            {{product.name}}
+          </a>
+        </div>
+        <div (mouseenter)="showBtn(product)" (mouseleave)="hideBtn(product)">
           <img class="product-card-img" 
             src="{{product.imageSource}}" 
             alt="Изображение не найдено({{product.id}})"
@@ -16,12 +22,6 @@
           <button md-raised-button id="btn{{product.id}}" class="show-btn" (click)="openProductCardDialog(product)">
             Быстрый просмотр
           </button>
-        </div>
-        <div class="product-title">
-          <a class="product-title-link" href='card?id={{product.id}}'
-            mdTooltip="{{product.name}}" mdTooltipPosition="above">
-          {{product.name}}
-        </a>
         </div>
         <div>
           <button md-raised-button color="primary" class="basket-btn" 
@@ -72,6 +72,10 @@
           {{n}}
         </p>
       </div> -->
+
+      <!-- <ul class="pagination">
+        <li *ngFor="let n of paggingResult.pageNumbers" class="page-number" id="page{{n}}" (click)="selectPage(n)">{{n}}</li>
+      </ul> -->
 
       <button md-icon-button (click)="nextPage()" [disabled]="!paggingResult.canNext">
         <md-icon>navigate_next</md-icon>
