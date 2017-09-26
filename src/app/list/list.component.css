@@ -102,6 +102,35 @@
     margin: 0;
 }
 
+.paginator.bottom {
+    margin-top: 32px;
+    /* border-top: 1px solid lightgray; */
+}
+
+.paginator button {
+    float: left;
+}
+
+.paginator p {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
+    text-align: center;
+}
+
+.paginator md-select {
+    padding-top: 10px;
+    /* height: 40px;
+    line-height: 40px; */
+    float: right;
+}
+
+.paginator .next-prev-panel {
+    width: 120px;
+    margin: auto;
+}
+
 .history-product-title {
     margin: 0;
     word-wrap: normal;

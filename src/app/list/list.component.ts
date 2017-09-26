@@ -27,11 +27,12 @@ export class ListComponent implements OnInit {
   productHistory: Array<Product>;
   productCardRoute = 'card';
 
-  pageSizeOptions = [10, 20, 30];
+  pageSizeOptions = [12, 24, 36, 48];
   paggingOptions: PaggingOptions = {
     pageNumber: 1,
-    pageSize: 20
+    pageSize: 12
   };
+  paggingResult: PaggingResult<Product>;
 
   constructor(
     private _router: Router,
@@ -42,6 +43,7 @@ export class ListComponent implements OnInit {
     private _dialog: MdDialog) {
 
       this.filteredProducts = new Array<Product>();
+      this.paggingResult = new PaggingResult<Product>();
 
       _route.queryParams.subscribe(params => {
         this.searchText = params['search'];
@@ -60,24 +62,43 @@ export class ListComponent implements OnInit {
         console.log('data');
         console.log(data);
 
+        this.paggingResult = data; 
         this.products = data.items;
 
-        if (!this.searchText) {
-          this.filteredProducts = this.products;
-        } else {
-          this.filteredProducts = this.products.filter(p => p.name.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1);
-        }
+        // if (!this.searchText) {
+        //   this.filteredProducts = this.products;
+        // } else {
+        //   this.filteredProducts = this.products.filter(p => p.name.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1);
+        // }
     
+        this.filteredProducts = this.products;
+
         this.productHistory = this._productHistoryService.getN(10);
         console.log('productHistory');
         console.log(this.productHistory);
       });
   }
 
-  paggingChange(page: PageEvent) {
-    this.paggingOptions.pageNumber = page.pageIndex;
-    this.paggingOptions.pageSize = page.pageSize;
+  paggingChange() {
+    console.log('paggingChange');
+    console.log(this.paggingOptions);
+
     this.refresh();
+  }
+
+  prevPage() {
+    this.paggingOptions.pageNumber -= 1;
+    this.paggingChange();
+  }
+
+  nextPage() {
+    this.paggingOptions.pageNumber += 1;
+    this.paggingChange();
+  }
+
+  pageSizeChange () {
+    this.paggingOptions.pageNumber = 1;
+    this.paggingChange();
   }
 
   putInBasket(product: Product) {
