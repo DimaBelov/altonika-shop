@@ -4,7 +4,7 @@
     </button>
     <div class="search-box-container" *ngIf="hasCurrentUser">
         <input type="text" class="form-control search-box" placeholder="Поиск" [(ngModel)]="searchText" (keyup.enter)="search()">
-        <button md-icon-button class="search-button" (click)="search()">
+        <button md-icon-button color="primary" class="search-button" (click)="search()">
             <md-icon>search</md-icon>
         </button>
     </div>
