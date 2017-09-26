@@ -106,7 +106,6 @@
 
 .paginator.bottom {
     margin-top: 32px;
-    /* border-top: 1px solid lightgray; */
 }
 
 .paginator button {
@@ -125,21 +124,23 @@
     float: left;
     height: 40px;
     line-height: 40px;
-    width: 100px;
+    width: 80px;
     text-align: center;
     margin: 0;
     overflow: hidden;
 }
 
+.page-number-chip {
+    margin: auto;
+}
+
 .paginator .next-prev-panel {
-    width: 180px;
+    width: 160px;
     margin: auto;
 }
 
 .paginator md-select {
     padding-top: 5px;
-    /* height: 40px;
-    line-height: 40px; */
     float: right;
 }
 

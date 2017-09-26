@@ -87,22 +87,33 @@ export class ListComponent implements OnInit {
 
   prevPage() {
     ListComponent.paggingOptions.pageNumber -= 1;
+    //this.scrollPageNumber();
     this.paggingChange();
   }
 
   nextPage() {
     ListComponent.paggingOptions.pageNumber += 1;
+    //this.scrollPageNumber();
     this.paggingChange();
   }
 
   pageSizeChange () {
     ListComponent.paggingOptions.pageNumber = 1;
+    //this.scrollPageNumber();
     this.paggingChange();
   }
 
   selectPage(n: number) {
     ListComponent.paggingOptions.pageNumber = n;
+    //this.scrollPageNumber();
     this.paggingChange();
+  }
+
+  scrollPageNumber() {
+    let pageNumberElemet = document.getElementById('page' + ListComponent.paggingOptions.pageNumber);
+    console.log('pageNumberElemet');
+    console.log(pageNumberElemet);
+    pageNumberElemet.scrollIntoView({block: 'center', inline: 'center'});
   }
 
   putInBasket(product: Product) {
