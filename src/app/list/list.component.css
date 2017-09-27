@@ -58,7 +58,7 @@
 .product-title-link {
     font-size: 14px;
     font-family: Roboto,"Helvetica Neue",sans-serif;
-    font-weight: bold;
+    /* font-weight: bold; */
     color: black;
     white-space: nowrap;
 }
