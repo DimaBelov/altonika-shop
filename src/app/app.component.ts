@@ -4,6 +4,7 @@ import { MdSidenav } from '@angular/material';
 import { UserService } from '@services/user.service';
 import { BasketService } from '@services/basket.service';
 import { ProductHistoryService } from '@services/product-history.service';
+import { ListComponent } from './list/list.component';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit {
   title = 'app';
   hasCurrentUser = false;
   searchText: string;
+  lastSearchKey = 'lastSearch';
 
   baseUrl = '/';
   loginUrl = '/login';
@@ -55,6 +57,11 @@ export class AppComponent implements OnInit {
     this._basketService.onItemAdded.subscribe(total => {
       this.basketTotal = total;
     });
+
+    let lastSearch = localStorage.getItem(this.lastSearchKey);
+    if (lastSearch !== null) {
+      this.searchText = lastSearch;
+    }
   }
 
   checkUser() {
@@ -69,6 +76,7 @@ export class AppComponent implements OnInit {
   }
 
   search() {
+    localStorage.setItem(this.lastSearchKey, this.searchText);
     this._router.navigate([this.listUrl], {queryParams: {'search': this.searchText}});
   }
 

@@ -50,6 +50,7 @@ export class ListComponent implements OnInit {
       _route.queryParams.subscribe(params => {
         ListComponent.paggingOptions.searchText = params['search'];
         ListComponent.lastSearch = ListComponent.paggingOptions.searchText;
+        ListComponent.paggingOptions.pageNumber = 1;
         this.refresh();
       });
     }
