@@ -7,10 +7,12 @@
 .search-box {
     float: left;
     width: 500px;
+    height: 40px;
+    line-height: 40px;
 }
 
 .search-button {
-    margin-left: 10px;
+    margin-left: -40px;
 }
 
 .fixed-top {

@@ -11,12 +11,6 @@
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
-.product-card-img-container {
-    /* display: inline-block;
-    position: relative; */
-    /* width: 250px; */
-}
-
 .show-btn {
     position: absolute;
     top: calc(50% - 18px); /*12px половина стороны md-icon-button;*/ /*78px и 18px половина стороны md-button*/
@@ -64,7 +58,7 @@
 .product-title-link {
     font-size: 14px;
     font-family: Roboto,"Helvetica Neue",sans-serif;
-    font-weight: bold;
+    /* font-weight: bold; */
     color: black;
     white-space: nowrap;
 }
@@ -77,7 +71,7 @@
     height: 20px;
     width: 25px;
     right: 10px;
-    top: 270px;
+    top: 272px;
 }
 
 .product-title-link:hover {
@@ -100,6 +94,61 @@
     height: 35.5px;
     line-height: 35.5px;
     margin: 0;
+}
+
+/*** Paggination ***/
+
+.paginator.bottom {
+    margin-top: 32px;
+    height: 40px;
+}
+
+.paginator button {
+    float: left;
+}
+
+.paginator p {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 0 5px 0 5px;
+}
+
+.paginator .page-number {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    width: 80px;
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+.page-number-chip {
+    margin: auto;
+}
+
+.paginator .next-prev-panel {
+    width: 160px;
+    margin: auto;
+}
+
+.paginator md-select {
+    padding-top: 5px;
+    float: right;
+}
+
+.paginator md-chip-list {
+    float: left;
+}
+
+.paginator .mat-chip-list-wrapper{
+    height: 40px;
+}
+
+.paginator .mat-chip {
+    margin-top: 5px;
 }
 
 .history-product-title {
