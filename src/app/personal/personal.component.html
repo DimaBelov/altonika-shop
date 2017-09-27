@@ -1,0 +1,57 @@
+<div class="component-panel">
+
+  <md-card>
+    <md-card-header>
+      <md-card-title>{{user.name}}</md-card-title>
+      <md-card-subtitle>{{user.login}}</md-card-subtitle>
+    </md-card-header>
+  </md-card>
+  
+  <md-expansion-panel>
+      <md-expansion-panel-header>
+        <md-panel-title>
+          Мои заказы
+        </md-panel-title>
+      </md-expansion-panel-header>
+  
+      <md-expansion-panel *ngFor="let order of orders">
+          <md-expansion-panel-header>
+            <md-panel-title>
+              Заказ №{{order.id}}
+            </md-panel-title>
+            <md-panel-description>
+              Создан: {{order.createDate | date: 'dd:MM:y HH:mm:ss'}}
+            </md-panel-description>
+          </md-expansion-panel-header>
+          <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let detail of order.details">
+                  <td>
+                    <img class="detail-img" 
+                      src="{{detail.product.imageSource}}" 
+                      alt="Изображение не найдено({{detail.product.id}})" 
+                      onError="this.src = 'img-not-found.jpg'"
+                      (click)="openProductCardDialog(detail.product)">
+                  </td>
+                  <td class="text-cell">{{detail.product.name}}</td>
+                  <td class="text-cell" style="width: 175px;">
+                    {{detail.quantity}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      
+        </md-expansion-panel>
+  
+    </md-expansion-panel>
+
+
+  
+</div>

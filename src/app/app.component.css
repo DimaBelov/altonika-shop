@@ -1,0 +1,26 @@
+.search-box-container {
+    width: 550px;
+    margin-right: auto;
+    margin-left: calc(50% - 314px); /*359*/
+}
+
+.search-box {
+    float: left;
+    width: 500px;
+}
+
+.search-button {
+    margin-left: 10px;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.outlet-container {
+    margin-top: 64px;
+}

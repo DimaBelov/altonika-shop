@@ -1,0 +1,22 @@
+.remove-btn {
+    float: right;
+}
+
+.clear-btn {
+    float: right;
+    margin-right: 10px;
+}
+
+.buy-btn {
+    float: right;
+}
+
+.basket-item-img {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.text-cell {
+    line-height: 100px;
+}

@@ -1,0 +1,34 @@
+.product-card {
+    width: 400px;
+    float: left;
+}
+
+.product-card-img {
+    width: 400px;
+    height: 400px;
+}
+
+.mat-dialog-container {
+    padding: 0;
+}
+
+.actions-container {
+    height: 40px;
+}
+
+.basket-btn {
+    float: right;
+}
+
+.product-description-container {
+    padding: 10px;
+    margin-left: 400px;
+}
+
+.product-title {
+    font-weight: bold;
+}
+
+.is-deleted-text {
+    float: right;
+}

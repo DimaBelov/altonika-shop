@@ -1,0 +1,29 @@
+<md-toolbar color="primary" class="fixed-top">
+    <button md-icon-button (click)="goto('/')">
+        <md-icon>home</md-icon>
+    </button>
+    <div class="search-box-container" *ngIf="hasCurrentUser">
+        <input type="text" class="form-control search-box" placeholder="Поиск" [(ngModel)]="searchText" (keyup.enter)="search()">
+        <button md-icon-button class="search-button" (click)="search()">
+            <md-icon>search</md-icon>
+        </button>
+    </div>
+    <button md-icon-button (click)="goto('basket')" *ngIf="hasCurrentUser"
+        mdTooltip="Корзина" mdTooltipPosition="below">
+        <md-icon>shopping_cart</md-icon>
+        {{basketTotal}}
+    </button>
+    <button md-icon-button (click)="goto('personal')" *ngIf="hasCurrentUser"
+        mdTooltip="Личный кабинет" mdTooltipPosition="below">
+        <md-icon>person</md-icon>
+    </button>
+    <button md-button (click)="logout()" *ngIf="hasCurrentUser">
+        Выход
+    </button>
+</md-toolbar>
+
+<div class="container outlet-container">
+    <router-outlet></router-outlet>
+</div>
+
+<!-- <simple-notifications [options]="options"></simple-notifications> -->
