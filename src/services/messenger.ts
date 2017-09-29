@@ -19,7 +19,7 @@ export class Messenger {
 
     }
 
-     show(message: string) {
+    show(message: string) {
         this._dialog.open(MessengerComponent,
             {
                 data: {
