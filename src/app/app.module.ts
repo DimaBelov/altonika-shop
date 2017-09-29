@@ -23,7 +23,6 @@ import { BasketService } from '@services/basket.service';
 import { ProductCardDialogComponent } from './product-card-dialog/product-card-dialog.component';
 import { OrderService } from '@services/order.service';
 import { ProductHistoryService } from '@services/product-history.service';
-import { OrderSuccessDialogComponent } from './basket/order-success-dialog/order-success-dialog.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PersonalComponent } from './personal/personal.component';
 import { GlobalErrorHandler } from '@services/global.error.handler';
@@ -36,7 +35,6 @@ import { Messenger, MessengerComponent } from '@services/messenger';
     ListComponent,
     BasketComponent,
     ProductCardDialogComponent,
-    OrderSuccessDialogComponent,
     ProductCardComponent,
     PersonalComponent,
     MessengerComponent
@@ -68,6 +66,6 @@ import { Messenger, MessengerComponent } from '@services/messenger';
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   bootstrap: [AppComponent],
-  entryComponents: [MessengerComponent, ProductCardDialogComponent, OrderSuccessDialogComponent]
+  entryComponents: [MessengerComponent, ProductCardDialogComponent]
 })
 export class AppModule { }

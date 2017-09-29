@@ -4,7 +4,6 @@ import { BasketItem } from '@entities/basket-item';
 import { BasketService } from '@services/basket.service';
 import { OrderService } from '@services/order.service';
 import { MdDialog } from '@angular/material';
-import { OrderSuccessDialogComponent } from './order-success-dialog/order-success-dialog.component';
 import { ProductCardDialogComponent } from '../product-card-dialog/product-card-dialog.component';
 import { Messenger } from '@services/messenger';
 
@@ -60,10 +59,6 @@ export class BasketComponent implements OnInit {
           console.log('on order add');
           console.log(r);
           this.clear();
-
-          // let dialogRef = this._dialog.open(OrderSuccessDialogComponent);
-          // dialogRef.componentInstance.orderId = <number>r;
-
           this._messenger.show('Заказ успешно создан');
         },
         error => {
