@@ -3,6 +3,7 @@ import { BasketItem } from '@entities/basket-item';
 
 export class Product extends NamedEntity {
     
+    code: string;
     price: number;
     description: string;
     imageSource: string;

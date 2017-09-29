@@ -27,6 +27,7 @@ import { OrderSuccessDialogComponent } from './basket/order-success-dialog/order
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PersonalComponent } from './personal/personal.component';
 import { GlobalErrorHandler } from '@services/global.error.handler';
+import { Messenger, MessengerComponent } from '@services/messenger';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { GlobalErrorHandler } from '@services/global.error.handler';
     ProductCardDialogComponent,
     OrderSuccessDialogComponent,
     ProductCardComponent,
-    PersonalComponent
+    PersonalComponent,
+    MessengerComponent
   ],
   imports: [
     BrowserModule,
@@ -61,10 +63,11 @@ import { GlobalErrorHandler } from '@services/global.error.handler';
     ProductService, 
     BasketService, 
     OrderService, 
-    ProductHistoryService
+    ProductHistoryService,
+    Messenger
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   bootstrap: [AppComponent],
-  entryComponents: [ProductCardDialogComponent, OrderSuccessDialogComponent]
+  entryComponents: [MessengerComponent, ProductCardDialogComponent, OrderSuccessDialogComponent]
 })
 export class AppModule { }
