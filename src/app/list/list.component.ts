@@ -98,6 +98,22 @@ export class ListComponent implements OnInit {
     this.paggingChange();
   }
 
+  firstPage() {
+    ListComponent.paggingOptions.pageNumber = 1;
+    //this.scrollPageNumber();
+    this.paggingChange();
+  }
+
+  lastPage() {
+    ListComponent.paggingOptions.pageNumber = 
+      this.paggingResult.pageNumbers.slice(
+        this.paggingResult.pageNumbers.length - 1, 
+        this.paggingResult.pageNumbers.length)
+      [0];
+    //this.scrollPageNumber();
+    this.paggingChange();
+  }
+
   pageSizeChange () {
     ListComponent.paggingOptions.pageNumber = 1;
     //this.scrollPageNumber();
