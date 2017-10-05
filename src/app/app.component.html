@@ -9,12 +9,12 @@
         </button>
     </div>
     <button md-icon-button (click)="goto('basket')" *ngIf="hasCurrentUser"
-        mdTooltip="Корзина" mdTooltipPosition="below">
+        mdTooltip="Корзина">
         <md-icon>shopping_cart</md-icon>
         {{basketTotal}}
     </button>
     <button md-icon-button (click)="goto('personal')" *ngIf="hasCurrentUser"
-        mdTooltip="Личный кабинет" mdTooltipPosition="below">
+        mdTooltip="Личный кабинет">
         <md-icon>person</md-icon>
     </button>
     <button md-button (click)="logout()" *ngIf="hasCurrentUser">
