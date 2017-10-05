@@ -26,11 +26,11 @@
 }
 
 .product-description-container {
-    padding: 10px;
+    padding: 0 10px 10px 10px;
     margin-left: 420px;
 }
 
-.product-title {
+/* .product-title {
     font-weight: bold;
     padding: 5px;
     font-size: 14px;
@@ -50,6 +50,10 @@
     width: 25px;
     right: 10px;
     top: 22.5px;
+} */
+
+.product-title {
+    margin-top: 0;
 }
 
 .is-deleted-text {
