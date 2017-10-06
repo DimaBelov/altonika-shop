@@ -1,4 +1,4 @@
-<md-card class="product-card-dlg">
+<!-- <md-card class="product-card-dlg">
   <md-card-header>
     <md-card-title class="product-title">{{product.name}}</md-card-title>
   </md-card-header>
@@ -22,4 +22,26 @@
           <p *ngIf="product.isDeleted" class="is-deleted-text">Нет в наличии</p>
       </div>
   </md-card-actions>
-</md-card>
+</md-card> -->
+
+<div class="product-card-dlg-container">
+  <div class="product-card-dlg">
+    <img class="product-card-dlg-img" 
+      src="{{product.imageSource}}" 
+      alt="Изображение не найдено({{product.id}})"
+      onError="this.src = 'img-not-found.jpg'">
+    <div>
+      <button md-raised-button color="primary" class="basket-btn" 
+        (click)="putInBasket(product)"
+        *ngIf="!product.isDeleted">
+        В корзину
+      </button>
+      <p *ngIf="product.isDeleted" class="is-deleted-text">Нет в наличии</p>
+    </div>
+  </div>
+
+  <div class="product-description-container">
+    <h3 class="product-title">{{product.name}}</h3>
+    <p>{{product.description}}</p>
+  </div>
+</div>

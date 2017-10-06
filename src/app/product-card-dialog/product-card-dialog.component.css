@@ -1,7 +1,13 @@
+.product-card-dlg-container {
+    height: 456px;
+    width: 800px;
+    padding: 10px;
+}
+
 .product-card-dlg {
     width: 400px;
     float: left;
-}
+} 
 
 .product-card-dlg-img {
     width: 400px;
@@ -27,10 +33,15 @@
     min-width: 350px;
 }
 
-.product-title {
-    font-weight: bold;
+.product-description-container {
+    padding: 0 10px 10px 10px;
+    margin-left: 400px;
 }
 
 .is-deleted-text {
     float: right;
+}
+
+.product-title {
+    margin-top: 0;
 }
