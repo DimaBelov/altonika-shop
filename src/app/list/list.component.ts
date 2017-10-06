@@ -10,6 +10,7 @@ import { ProductHistoryService } from '@services/product-history.service';
 import { ProductCardDialogComponent } from '../product-card-dialog/product-card-dialog.component';
 import { PaggingOptions } from '@entities/pagging-options';
 import { PaggingResult } from '@entities/pagging-result';
+import { Messenger } from '@services/messenger';
 
 @Component({
   selector: 'app-list',
@@ -42,7 +43,8 @@ export class ListComponent implements OnInit {
     private _productService: ProductService, 
     private _basketService: BasketService,
     private _productHistoryService: ProductHistoryService,
-    private _dialog: MdDialog) {
+    private _dialog: MdDialog,
+    private _messenger: Messenger) {
 
       this.filteredProducts = new Array<Product>();
       this.paggingResult = new PaggingResult<Product>();
@@ -56,23 +58,29 @@ export class ListComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.refresh();
   }
   
   refresh() {
     this._productService.get(ListComponent.paggingOptions)
-      .subscribe(data => {
-        console.log('data');
-        console.log(data);
+      .subscribe(
+        data => {
+          console.log('data');
+          console.log(data);
 
-        this.paggingResult = data; 
-        this.products = data.items;
-        this.filteredProducts = this.products;
+          this.paggingResult = data;
+          this.products = data.items;
+          this.filteredProducts = this.products;
 
-        this.productHistory = this._productHistoryService.getN(10);
-        console.log('productHistory');
-        console.log(this.productHistory);
-      });
+          this.productHistory = this._productHistoryService.getN(10);
+          console.log('productHistory');
+          console.log(this.productHistory);
+        },
+        error => {
+          console.log('get products error');
+          console.log(error);
+          // this._messenger.onError(error, 'get products error');
+        }
+      );
   }
 
   get paggingOptionsStatic () {
