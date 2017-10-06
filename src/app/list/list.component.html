@@ -85,14 +85,28 @@
     </md-select>
   </div>
 
-  <!-- <div class="page-number-panel" style="width: 200px; height: 40px; overflow: hidden;">
-    <div style="position: absolute;">
-      <button *ngFor="let n of paggingResult.pageNumbers" class="page-number"
-        id="page{{n}}"
-        (click)="selectPage(n)">
-        {{n}}
-      </button>
-    </div>
-  </div> -->
+  <div class="history">
+    <h4>Недавно Вы смотрели:</h4>
+    <md-grid-list cols="10" rowHeight="148px" #grid>
+      <md-grid-tile
+          *ngFor="let product of productHistory"
+          [colspan]="1"
+          [rowspan]="1">
+        <div class="history-product-card">
+            <img class="history-product-card-img" 
+              src="{{product.imageSource}}" 
+              alt="Изображение не найдено({{product.id}})"
+              onError="this.src = 'img-not-found.jpg'"
+              (click)="openProductCard(product)">
+            <div class="history-product-title">
+              <a class="product-title-link history-product-title-link" href='card?id={{product.id}}'
+                mdTooltip="{{product.name}}" mdTooltipPosition="above">
+                {{product.name}}
+              </a>
+            </div>
+        </div>
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
 
 </div>

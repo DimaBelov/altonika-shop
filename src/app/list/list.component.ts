@@ -169,11 +169,13 @@ export class ListComponent implements OnInit {
 
   openProductCard(product: Product) {
     this._router.navigate([this.productCardRoute], {queryParams: {'id': product.id}});
+    this._productHistoryService.add(product);
   }
 
   openProductCardDialog(product: Product) {
     let dialogRef = this._dialog.open(ProductCardDialogComponent);
     dialogRef.componentInstance.product = product;
+    this._productHistoryService.add(product);
   }
 
   showBtn(product: Product) {
