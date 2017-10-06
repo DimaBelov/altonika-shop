@@ -36,6 +36,7 @@ export class ListComponent implements OnInit {
 
   pageSizeOptions = [12, 24, 36, 48];
   paggingResult: PaggingResult<Product>;
+  spinnerMode = 'determinate';
 
   constructor(
     private _router: Router,
@@ -48,22 +49,23 @@ export class ListComponent implements OnInit {
 
       this.filteredProducts = new Array<Product>();
       this.paggingResult = new PaggingResult<Product>();
-
-      _route.queryParams.subscribe(params => {
-        ListComponent.paggingOptions.searchText = params['search'];
-        ListComponent.lastSearch = ListComponent.paggingOptions.searchText;
-        ListComponent.paggingOptions.pageNumber = 1;
-        this.refresh();
-      });
     }
 
   ngOnInit() {
+    this._route.queryParams.subscribe(params => {
+      ListComponent.paggingOptions.searchText = params['search'];
+      ListComponent.lastSearch = ListComponent.paggingOptions.searchText;
+      ListComponent.paggingOptions.pageNumber = 1;
+      this.refresh();
+    });
   }
   
   refresh() {
+    this.showSpinner();
     this._productService.get(ListComponent.paggingOptions)
       .subscribe(
         data => {
+          this.hideSpinner();
           console.log('data');
           console.log(data);
 
@@ -76,11 +78,28 @@ export class ListComponent implements OnInit {
           console.log(this.productHistory);
         },
         error => {
+          this.hideSpinner();
           console.log('get products error');
           console.log(error);
           // this._messenger.onError(error, 'get products error');
         }
       );
+  }
+
+  showSpinner() {
+
+    // document.getElementsByTagName('app-list')[0].innerHTML += 
+    // '<div id="spenner" style="position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000;">' + 
+    //   '<div style="height: 100px; width: 100px; margin: auto;">' +
+    //     '<mat-progress-spinner color="primary" mode="indeterminate">' + 
+    //   '</div>' +
+    // '</mat-progress-spinner></div>';
+    
+    this.spinnerMode = 'indeterminate';
+  }
+
+  hideSpinner() {
+    this.spinnerMode = 'determinate';
   }
 
   get paggingOptionsStatic () {

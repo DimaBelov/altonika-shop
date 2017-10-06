@@ -82,3 +82,17 @@ md-toolbar-row a:focus {
     position: fixed;
     width: 100%; */
 }
+
+.spinner-outer-container {
+    position: relative;
+}
+
+.spinner-inner-container {
+    position: absolute;
+    margin-top: calc(50% - 50px);
+    margin-left: calc(50% - 50px);
+}
+
+.spinner {
+    margin: auto;
+}
