@@ -1,3 +1,9 @@
+<div class="spinner-outer-container">
+    <div class="spinner-inner-container">
+        <mat-progress-spinner class="spinner" color="primary" [mode]="spinnerMode" *ngIf="spinnerMode == 'indeterminate'"></mat-progress-spinner>
+    </div>
+</div>
+
 <div class="component-panel">
   <p class="auth-failed-text" *ngIf="authFailed">Неправильный логин или пароль</p>
   <div>

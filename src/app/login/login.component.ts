@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
 
   authFailed: boolean;
   returnUrl: string;
-  
-  public user: User = new User();
+  user: User = new User();
+  spinnerMode = 'determinate';
 
   constructor(
     private _router: Router, 
@@ -34,22 +34,39 @@ export class LoginComponent implements OnInit {
   login() {
     console.log('user');
     console.log(this.user);
+    this.showSpinner();
     this._userService.auth(this.user)
-    .subscribe(user => {
-      console.log('auth user');
-      console.log(user);
+    .subscribe(
+      user => {
+        this.hideSpinner();
+        console.log('auth user');
+        console.log(user);
 
-      if (user !== null) {
-        this.authFailed = false;
-        this._userService.setCurrentUser(user);
-        console.log('user authenticated');
-        this._router.navigate([this.returnUrl]);
-      } else {
-        this.authFailed = true;
-        console.log('user not found');
-        // this._snackBar.open('Неправильный логин или пароль', null, {});
-        // this._notificationsService.error('Неправильный логин или пароль');
+        if (user !== null) {
+          this.authFailed = false;
+          this._userService.setCurrentUser(user);
+          console.log('user authenticated');
+          this._router.navigate([this.returnUrl]);
+        } else {
+          this.authFailed = true;
+          console.log('user not found');
+          // this._snackBar.open('Неправильный логин или пароль', null, {});
+          // this._notificationsService.error('Неправильный логин или пароль');
+        }
+      },
+      error => {
+        this.hideSpinner();
+        console.log('auth user error');
+        console.log(error);
       }
-    });
+    );
+  }
+
+  showSpinner() {
+    this.spinnerMode = 'indeterminate';
+  }
+
+  hideSpinner() {
+    this.spinnerMode = 'determinate';
   }
 }
