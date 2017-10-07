@@ -1,28 +1,40 @@
 .search-box-container {
-    width: 550px;
-    margin-right: auto;
-    margin-left: calc(50% - 314px); /*359*/
+  width: 550px;
+  margin-right: auto;
+  margin-left: calc(50% - 314px);
+  /*359*/
+}
+
+.search-box-form {
+  width: 550px;
+}
+
+.cdk-overlay-container {
+  z-index: 1031;
 }
 
 .search-box {
-    float: left;
-    width: 500px;
-    height: 40px;
-    line-height: 40px;
+  float: left;
+  width: 500px;
+  height: 40px;
+  line-height: 40px;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 16px;
 }
 
 .search-button {
-    margin-left: -40px;
+  margin-left: -40px !important;
 }
 
 .fixed-top {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
 }
 
 .outlet-container {
-    margin-top: 64px;
+  margin-top: 64px;
 }
+

@@ -13,6 +13,7 @@ import { PaggingResult } from '@entities/pagging-result';
 import { Messenger } from '@services/messenger';
 import { Logger } from '@services/logger';
 import { AsyncCommand } from '@lib/async-command';
+import { Paginator } from '@services/paginator';
 
 @Component({
   selector: 'app-list',
@@ -23,117 +24,55 @@ import { AsyncCommand } from '@lib/async-command';
 export class ListComponent implements OnInit {
 
   static lastSearch: string;
+  static lastPaggingOptions: PaggingOptions;
 
-  static paggingOptions: PaggingOptions = {
-    pageNumber: 1,
-    pageSize: 12,
-    searchText: ''
-  };
+  paginator = new Paginator(
+    (options) => this.refresh(options),
+    (r, e) => this.refreshComplete(r, e));
 
   filteredProducts: Array<Product>;
   searchText: string;
   productHistory: Array<Product>;
   productCardRoute = 'card';
 
-  pageSizeOptions = [12, 24, 36, 48];
-  paggingResult: PaggingResult<Product>;
-
-  refreshCommand = new AsyncCommand<PaggingResult<Product>>(
-    () => this.refresh(),
-    (r, e) => this.refreshComplete(r, e)
-  );
-
   constructor(
     private _router: Router,
     private _route: ActivatedRoute,
     private _productService: ProductService,
-    private _basketService: BasketService,
     private _productHistoryService: ProductHistoryService,
     private _dialog: MdDialog,
-    private _messenger: Messenger) {
+    private _messenger: Messenger,
+    public basketService: BasketService) {
     this.filteredProducts = new Array<Product>();
-    this.paggingResult = new PaggingResult<Product>();
   }
 
   ngOnInit() {
     this._route.queryParams.subscribe(params => {
-      this.onSearchChanged(params['search']);
-      this.refreshCommand.execute();
+      if (params['search'] === ListComponent.lastSearch && ListComponent.lastPaggingOptions != null) {
+        Logger.log('set saved options', ListComponent.lastPaggingOptions);
+        this.paginator.paggingOptions = ListComponent.lastPaggingOptions;
+      } else {
+        Logger.log('query params changed');
+        ListComponent.lastSearch =
+          this.paginator.paggingOptions.searchText =
+          params['search'];
+        this.paginator.paggingOptions.pageNumber = 1;
+      }
+      this.paginator.page();
     });
   }
 
-  onSearchChanged(searchParam: string) {
-    ListComponent.lastSearch =
-      ListComponent.paggingOptions.searchText =
-      searchParam;
-    ListComponent.paggingOptions.pageNumber = 1;
-  }
-
-  refresh() {
-    return this._productService.get(ListComponent.paggingOptions);
+  refresh(options: PaggingOptions) {
+    ListComponent.lastPaggingOptions = options;
+    return this._productService.get(options);
   }
 
   refreshComplete(result: PaggingResult<Product>, error: any) {
+    this.productHistory = this._productHistoryService.getN(10);
     if (error != null) {
       return;
     }
-
-    this.paggingResult = result;
     this.filteredProducts = result.items;
-    this.productHistory = this._productHistoryService.getN(10);
-  }
-
-  get paggingOptionsStatic() {
-    return ListComponent.paggingOptions;
-  }
-
-  paggingChange() {
-    this.refreshCommand.execute();
-  }
-
-  prevPage() {
-    ListComponent.paggingOptions.pageNumber -= 1;
-    this.paggingChange();
-  }
-
-  nextPage() {
-    ListComponent.paggingOptions.pageNumber += 1;
-    this.paggingChange();
-  }
-
-  firstPage() {
-    ListComponent.paggingOptions.pageNumber = 1;
-    this.paggingChange();
-  }
-
-  lastPage() {
-    ListComponent.paggingOptions.pageNumber =
-      this.paggingResult.pageNumbers.slice(
-        this.paggingResult.pageNumbers.length - 1,
-        this.paggingResult.pageNumbers.length)
-      [0];
-    this.paggingChange();
-  }
-
-  pageSizeChange() {
-    ListComponent.paggingOptions.pageNumber = 1;
-    this.paggingChange();
-  }
-
-  selectPage(n: number) {
-    ListComponent.paggingOptions.pageNumber = n;
-    this.paggingChange();
-  }
-
-  // scrollPageNumber() {
-  //   let pageNumberElemet = document.getElementById('page' + ListComponent.paggingOptions.pageNumber);
-  //   console.log('pageNumberElemet');
-  //   console.log(pageNumberElemet);
-  //   pageNumberElemet.scrollIntoView({ block: 'center', inline: 'center' });
-  // }
-
-  putInBasket(product: Product) {
-    this._basketService.putIn(product);
   }
 
   openProductCard(product: Product) {
@@ -145,15 +84,5 @@ export class ListComponent implements OnInit {
     let dialogRef = this._dialog.open(ProductCardDialogComponent);
     dialogRef.componentInstance.product = product;
     this._productHistoryService.add(product);
-  }
-
-  showBtn(product: Product) {
-    let btn = document.getElementById('btn' + product.id);
-    btn.style.visibility = 'visible';
-  }
-
-  hideBtn(product: Product) {
-    let btn = document.getElementById('btn' + product.id);
-    btn.style.visibility = 'hidden';
   }
 }

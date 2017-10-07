@@ -1,4 +1,4 @@
-<div class="component-panel" *ngIf="!refreshCommand.isBusy">
+<div class="component-panel" *ngIf="!paginator.pageCommand.isBusy">
 
   <p *ngIf="filteredProducts && filteredProducts.length == 0" class="no-product-text">Извините, ничего не найдено</p>
   <md-grid-list cols="4" rowHeight="350px" #grid>
@@ -7,7 +7,9 @@
         [colspan]="1"
         [rowspan]="1">
       <div class="product-card">
-        <div (mouseenter)="showBtn(product)" (mouseleave)="hideBtn(product)">
+        <div id="{{product.id}}"
+          onmouseenter="$('#btn' + this.id).show();"
+          onmouseleave="$('#btn' + this.id).hide()"> 
           <img class="product-card-img" 
             src="{{product.imageSource}}" 
             alt="Изображение не найдено({{product.id}})"
@@ -25,7 +27,7 @@
         </div>
         <div>
           <button md-raised-button color="primary" class="basket-btn" 
-            (click)="putInBasket(product)"
+            (click)="basketService.putIn(product)"
             *ngIf="!product.isDeleted">
             В корзину
           </button>
@@ -37,43 +39,43 @@
 
 
   <div class="paginator bottom" *ngIf="filteredProducts && filteredProducts.length != 0">
-
+    
     <md-chip-list>
       <md-chip>
-        {{paggingOptionsStatic.pageSize * paggingOptionsStatic.pageNumber <= paggingResult.totalCount ? paggingOptionsStatic.pageSize * paggingOptionsStatic.pageNumber : paggingResult.totalCount}}
+        {{paginator.paggingResult.current}}
         из
-        {{paggingResult.totalCount}}
+        {{paginator.paggingResult.total}}
       </md-chip>
     </md-chip-list>
 
     <div class="next-prev-panel">
-      <button md-icon-button (click)="firstPage()" [disabled]="!paggingResult.canPrev"
+      <button md-icon-button (click)="paginator.firstPage()" [disabled]="!paginator.paggingResult.canPrev"
         mdTooltip="Первая страница" >
         <md-icon>first_page</md-icon>
       </button>
-      <button md-icon-button (click)="prevPage()" [disabled]="!paggingResult.canPrev"
+      <button md-icon-button (click)="paginator.prevPage()" [disabled]="!paginator.paggingResult.canPrev"
         mdTooltip="Назад">
         <md-icon>navigate_before</md-icon>
       </button>
       
       <md-chip-list class="page-number">
         <md-chip class="page-number-chip">
-            {{paggingOptionsStatic.pageNumber}}
+            {{paginator.paggingOptions.pageNumber}}
         </md-chip>
       </md-chip-list>
 
-      <button md-icon-button (click)="nextPage()" [disabled]="!paggingResult.canNext"
+      <button md-icon-button (click)="paginator.nextPage()" [disabled]="!paginator.paggingResult.canNext"
         mdTooltip="Вперёд">
         <md-icon>navigate_next</md-icon>
       </button>
-      <button md-icon-button (click)="lastPage()" [disabled]="!paggingResult.canNext"
+      <button md-icon-button (click)="paginator.lastPage()" [disabled]="!paginator.paggingResult.canNext"
         mdTooltip="Последняя страница">
         <md-icon>last_page</md-icon>
       </button>
     </div>
     
-    <md-select [(ngModel)]="paggingOptionsStatic.pageSize" (ngModelChange)="pageSizeChange()">
-      <md-option *ngFor="let size of pageSizeOptions" [value]="size">
+    <md-select [(ngModel)]="paginator.paggingOptions.pageSize" (ngModelChange)="paginator.pageSizeChange()">
+      <md-option *ngFor="let size of paginator.pageSizeOptions" [value]="size">
         {{ size }}
       </md-option>
     </md-select>

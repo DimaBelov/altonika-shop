@@ -9,14 +9,13 @@ export class ProductHistoryService {
     private productHistorytKey = 'productHistory';
 
     constructor() {
-        // this.init();
-     }
+    }
 
     init() {
         if (localStorage.getItem(this.productHistorytKey) !== null) {
             return;
         }
-    
+
         this.set([]);
     }
 

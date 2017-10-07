@@ -1,16 +1,19 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Route, Router, NavigationEnd } from '@angular/router';
 import { MdSidenav } from '@angular/material';
 import { UserService } from '@services/user.service';
 import { BasketService } from '@services/basket.service';
 import { ProductHistoryService } from '@services/product-history.service';
+import { SearchHistoryService } from '@services/search-history.service';
 import { ListComponent } from './list/list.component';
 import { WaitSpinner } from '@services/wait-spinner';
+import { Logger } from '@services/logger';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
 
@@ -18,6 +21,7 @@ export class AppComponent implements OnInit {
   hasCurrentUser = false;
   searchText: string;
   lastSearchKey = 'lastSearch';
+  searchHistory: Array<string>; //= new Array<string>();
 
   baseUrl = '/';
   loginUrl = '/login';
@@ -35,13 +39,14 @@ export class AppComponent implements OnInit {
   };
 
   constructor(
-    private _router: Router, 
-    private _userService: UserService, 
-    private _basketService: BasketService, 
-    private _productHistoryService: ProductHistoryService) {
+    private _router: Router,
+    private _userService: UserService,
+    private _basketService: BasketService,
+    private _productHistoryService: ProductHistoryService,
+    private _searchHistoryService: SearchHistoryService) {
 
     this.routes = _router.config;
-    
+
     _router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         console.log(_router);
@@ -54,7 +59,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this._basketService.init();
     this._productHistoryService.init();
-    
+    this._searchHistoryService.init();
+
     this.basketTotal = this._basketService.totalCount();
     this._basketService.onItemAdded.subscribe(total => {
       this.basketTotal = total;
@@ -64,6 +70,7 @@ export class AppComponent implements OnInit {
     if (lastSearch !== null) {
       this.searchText = lastSearch;
     }
+    this.searchHistory = this._searchHistoryService.getN(10);
 
     WaitSpinner.status.subscribe(b => setTimeout(() => this.showSpinner = b, 0));
   }
@@ -81,7 +88,9 @@ export class AppComponent implements OnInit {
 
   search() {
     localStorage.setItem(this.lastSearchKey, this.searchText);
-    this._router.navigate([this.listUrl], {queryParams: {'search': this.searchText}});
+    this._router.navigate([this.listUrl], { queryParams: { 'search': this.searchText } });
+    this._searchHistoryService.add(this.searchText);
+    this.searchHistory = this._searchHistoryService.getN(10);
   }
 
   logout() {

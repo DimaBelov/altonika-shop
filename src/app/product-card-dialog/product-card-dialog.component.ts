@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {MdDialogRef} from '@angular/material';
+import { MdDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { Product } from '@entities/product';
@@ -18,21 +18,14 @@ export class ProductCardDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MdDialogRef<ProductCardDialogComponent>,
-    private _basketService: BasketService,
-    private _router: Router) { }
+    private _router: Router,
+    public basketService: BasketService) { }
 
   ngOnInit() {
   }
 
-  putInBasket(product: Product) {
-    console.log('putInBasket');
-    console.log(product);
-
-    this._basketService.putIn(product);
-  }
-
   openProductCard(product: Product) {
     this.dialogRef.close(true);
-    this._router.navigate([this.productCardRoute], {queryParams: {'id': product.id}});
+    this._router.navigate([this.productCardRoute], { queryParams: { 'id': product.id } });
   }
 }

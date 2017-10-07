@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Ng2CompleterModule } from 'ng2-completer';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -23,6 +24,7 @@ import { BasketService } from '@services/basket.service';
 import { ProductCardDialogComponent } from './product-card-dialog/product-card-dialog.component';
 import { OrderService } from '@services/order.service';
 import { ProductHistoryService } from '@services/product-history.service';
+import { SearchHistoryService } from '@services/search-history.service';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PersonalComponent } from './personal/personal.component';
 import { GlobalErrorHandler } from '@services/global.error.handler';
@@ -51,7 +53,8 @@ import { Logger } from '@services/logger';
     MaterialModule,
     AccordionModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2CompleterModule
   ],
   providers: [
     {
@@ -64,6 +67,7 @@ import { Logger } from '@services/logger';
     BasketService, 
     OrderService, 
     ProductHistoryService,
+    SearchHistoryService,
     Messenger,
     WaitSpinner,
     Logger

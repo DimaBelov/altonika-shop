@@ -20,7 +20,7 @@ export class ProductCardComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _productService: ProductService,
-    private _basketService: BasketService) {
+    public basketService: BasketService) {
     _route.queryParams.subscribe(params => {
       this.productId = params['id'];
       this.refresh();
@@ -40,14 +40,6 @@ export class ProductCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.refresh();
-  }
-
-  putInBasket(product: Product) {
-    console.log('putInBasket');
-    console.log(product);
-
-    this._basketService.putIn(product);
   }
 
   back() {

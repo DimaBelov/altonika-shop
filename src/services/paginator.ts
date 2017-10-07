@@ -1,4 +1,4 @@
-import {Observable} from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 
 import { PaggingOptions } from '@entities/pagging-options';
 import { PaggingResult } from '@entities/pagging-result';
@@ -15,7 +15,8 @@ export class Paginator<T> {
     pageCommand: AsyncCommand<PaggingResult<T>>;
 
     constructor(
-        private onPaggingChanged: (paggingOptions: PaggingOptions) => Observable<PaggingResult<T>>
+        private onPaggingChanged: (paggingOptions: PaggingOptions) => Observable<PaggingResult<T>>,
+        private onPaggingComplete: (result: PaggingResult<T>, error: any) => void,
     ) {
         this.pageCommand = new AsyncCommand<PaggingResult<T>>(
             () => this.onPaggingChanged(this.paggingOptions),
@@ -23,27 +24,28 @@ export class Paginator<T> {
         );
     }
 
-    pageComplete(result: PaggingResult<T>, error: any) {
-        if (error != null) {
-            return;
-        }
+    page() {
+        this.pageCommand.execute();
+    }
 
+    pageComplete(result: PaggingResult<T>, error: any) {
         this.paggingResult = result;
+        this.onPaggingComplete.call(null, result, error);
     }
 
     prevPage() {
         this.paggingOptions.pageNumber -= 1;
-        this.pageCommand.execute();
+        this.page();
     }
 
     nextPage() {
         this.paggingOptions.pageNumber += 1;
-        this.pageCommand.execute();
+        this.page();
     }
 
     firstPage() {
         this.paggingOptions.pageNumber = 1;
-        this.pageCommand.execute();
+        this.page();
     }
 
     lastPage() {
@@ -52,6 +54,16 @@ export class Paginator<T> {
                 this.paggingResult.pageNumbers.length - 1,
                 this.paggingResult.pageNumbers.length)
             [0];
-        this.pageCommand.execute();
+        this.page();
+    }
+
+    pageSizeChange() {
+        this.paggingOptions.pageNumber = 1;
+        this.page();
+    }
+
+    selectPage(n: number) {
+        this.paggingOptions.pageNumber = n;
+        this.page();
     }
 }

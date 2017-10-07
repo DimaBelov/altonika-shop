@@ -1,6 +1,7 @@
 export class PaggingResult<T> {
     items: Array<T>;
-    totalCount: number;
+    current: number;
+    total: number;
     canNext: boolean;
     canPrev: boolean;
     pageNumbers: Int32Array;

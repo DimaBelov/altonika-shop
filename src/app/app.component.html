@@ -3,7 +3,33 @@
         <md-icon>home</md-icon>
     </button>
     <div class="search-box-container" *ngIf="hasCurrentUser">
-        <input type="text" class="form-control search-box" placeholder="Поиск" [(ngModel)]="searchText" (keyup.enter)="search()">
+        <!-- <div style="position: relative;">
+            <div style="height: 40px;">
+                <input type="text" class="form-control search-box" placeholder="Поиск" [(ngModel)]="searchText" (keyup.enter)="search()"
+                    onfocus="$('#autocompletePopup').show()" onblur="$('#autocompletePopup').hide()">
+
+                <button md-icon-button color="primary" class="search-button" (click)="search()">
+                    <md-icon>search</md-icon>
+                </button>
+            </div>
+
+            <div id="autocompletePopup" 
+                style="display: none; width: 500px; background: green; position: absolute;">
+                <md-list>
+                    <md-list-item *ngFor="let search of searchHistory">search</md-list-item>
+                </md-list>
+            </div>
+        </div> -->
+
+        <!-- <md-form-field class="search-box-form">
+            
+        </md-form-field> -->
+        <input type="text" class="form-control search-box" placeholder="Поиск" aria-label="Number" mdInput [mdAutocomplete]="auto" [(ngModel)]="searchText" (keyup.enter)="search()">
+        <md-autocomplete #auto="mdAutocomplete">
+            <md-option *ngFor="let search of searchHistory" [value]="search">
+                {{ search }}
+            </md-option>
+        </md-autocomplete>
         <button md-icon-button color="primary" class="search-button" (click)="search()">
             <md-icon>search</md-icon>
         </button>
