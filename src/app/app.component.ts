@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   hasCurrentUser = false;
   searchText: string;
   lastSearchKey = 'lastSearch';
-  searchHistory: Array<string>; //= new Array<string>();
+  searchHistory: Array<string>;
 
   baseUrl = '/';
   loginUrl = '/login';

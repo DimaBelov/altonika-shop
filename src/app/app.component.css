@@ -2,11 +2,6 @@
   width: 550px;
   margin-right: auto;
   margin-left: calc(50% - 314px);
-  /*359*/
-}
-
-.search-box-form {
-  width: 550px;
 }
 
 .cdk-overlay-container {
