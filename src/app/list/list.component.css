@@ -87,60 +87,7 @@
     margin: 0;
 }
 
-/*** Paggination ***/
-
-.paginator.bottom {
-    margin-top: 32px;
-    height: 40px;
-}
-
-.paginator button {
-    float: left;
-}
-
-.paginator p {
-    float: left;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    margin: 0 5px 0 5px;
-}
-
-.paginator .page-number {
-    float: left;
-    height: 40px;
-    line-height: 40px;
-    width: 80px;
-    text-align: center;
-    margin: 0;
-    overflow: hidden;
-}
-
-.page-number-chip {
-    margin: auto;
-}
-
-.paginator .next-prev-panel {
-    width: 240px;
-    margin: auto;
-}
-
-.paginator md-select {
-    padding-top: 5px;
-    float: right;
-}
-
-.paginator md-chip-list {
-    float: left;
-}
-
-.paginator .mat-chip-list-wrapper{
-    height: 40px;
-}
-
-.paginator .mat-chip {
-    margin-top: 5px;
-}
+/* History */
 
 .history {
     margin-top: 32px;

@@ -27,6 +27,7 @@ import { ProductHistoryService } from '@services/product-history.service';
 import { SearchHistoryService } from '@services/search-history.service';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PersonalComponent } from './personal/personal.component';
+import { PaginatorPanel } from '@lib/paginator-panel/paginator-panel';
 import { GlobalErrorHandler } from '@services/global.error.handler';
 import { Messenger, MessengerComponent } from '@services/messenger';
 import { WaitSpinner } from '@services/wait-spinner';
@@ -41,7 +42,8 @@ import { Logger } from '@services/logger';
     ProductCardDialogComponent,
     ProductCardComponent,
     PersonalComponent,
-    MessengerComponent
+    MessengerComponent,
+    PaginatorPanel
   ],
   imports: [
     BrowserModule,

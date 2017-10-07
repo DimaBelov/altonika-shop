@@ -37,49 +37,7 @@
     </md-grid-tile>
   </md-grid-list>
 
-
-  <div class="paginator bottom" *ngIf="filteredProducts && filteredProducts.length != 0">
-    
-    <md-chip-list>
-      <md-chip>
-        {{paginator.paggingResult.current}}
-        из
-        {{paginator.paggingResult.total}}
-      </md-chip>
-    </md-chip-list>
-
-    <div class="next-prev-panel">
-      <button md-icon-button (click)="paginator.firstPage()" [disabled]="!paginator.paggingResult.canPrev"
-        mdTooltip="Первая страница" >
-        <md-icon>first_page</md-icon>
-      </button>
-      <button md-icon-button (click)="paginator.prevPage()" [disabled]="!paginator.paggingResult.canPrev"
-        mdTooltip="Назад">
-        <md-icon>navigate_before</md-icon>
-      </button>
-      
-      <md-chip-list class="page-number">
-        <md-chip class="page-number-chip">
-            {{paginator.paggingOptions.pageNumber}}
-        </md-chip>
-      </md-chip-list>
-
-      <button md-icon-button (click)="paginator.nextPage()" [disabled]="!paginator.paggingResult.canNext"
-        mdTooltip="Вперёд">
-        <md-icon>navigate_next</md-icon>
-      </button>
-      <button md-icon-button (click)="paginator.lastPage()" [disabled]="!paginator.paggingResult.canNext"
-        mdTooltip="Последняя страница">
-        <md-icon>last_page</md-icon>
-      </button>
-    </div>
-    
-    <md-select [(ngModel)]="paginator.paggingOptions.pageSize" (ngModelChange)="paginator.pageSizeChange()">
-      <md-option *ngFor="let size of paginator.pageSizeOptions" [value]="size">
-        {{ size }}
-      </md-option>
-    </md-select>
-  </div>
+  <paginator-panel [paginator]="paginator"></paginator-panel>
 
   <div class="history">
     <h5>Недавно Вы смотрели:</h5>
