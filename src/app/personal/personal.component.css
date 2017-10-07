@@ -36,6 +36,10 @@
     color: goldenrod;
 }
 
+.panel-title-icon.order {
+    width: 75px;
+}
+
 .mat-list-item-content {
     height: 50px !important;
 }

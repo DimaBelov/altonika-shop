@@ -1,54 +1,83 @@
 /*** Paggination ***/
 
 .paginator.bottom {
-    margin-top: 32px;
-    height: 40px;
+  margin-top: 32px;
+  height: 40px;
 }
 
 .paginator button {
-    float: left;
+  float: left;
 }
 
 .paginator p {
-    float: left;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    margin: 0 5px 0 5px;
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin: 0 5px 0 5px;
 }
 
 .paginator .page-number {
-    float: left;
-    height: 40px;
-    line-height: 40px;
-    width: 80px;
-    text-align: center;
-    margin: 0;
-    overflow: hidden;
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  width: 182px;
+  text-align: center;
+  margin: 0;
+  overflow: hidden;
 }
 
 .page-number-chip {
-    margin: auto;
+  margin: auto;
 }
 
 .paginator .next-prev-panel {
-    width: 240px;
-    margin: auto;
+  width: 352px;
+  margin: auto;
 }
 
 .paginator md-select {
-    padding-top: 5px;
-    float: right;
+  padding-top: 5px;
+  float: right;
 }
 
 .paginator md-chip-list {
-    float: left;
+  float: left;
 }
 
-.paginator .mat-chip-list-wrapper{
-    height: 40px;
+.paginator .mat-chip-list-wrapper {
+  height: 40px;
 }
 
 .paginator .mat-chip {
-    margin-top: 5px;
+  margin-top: 5px;
 }
+
+.page-numbers-panel {
+  margin-left: 10px;
+  height: 40px;
+  width: 182px;
+  float: left;
+}
+
+.page-numbers-panel-btn {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+}
+
+.page-numbers-panel-btn:focus {
+  outline: none;
+}
+
+.page-numbers-panel-btn:active:focus {
+  outline: none;
+}
+
+.page-numbers-panel-btn.selected {
+  background: #3f51b5;
+  color: white;
+}
+

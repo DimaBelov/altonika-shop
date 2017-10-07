@@ -6,6 +6,8 @@
         </md-chip>
     </md-chip-list>
 
+
+
     <div class="next-prev-panel">
         <button md-icon-button (click)="paginator.firstPage()" [disabled]="!paginator.paggingResult.canPrev" mdTooltip="Первая страница">
             <md-icon>first_page</md-icon>
@@ -14,11 +16,15 @@
             <md-icon>navigate_before</md-icon>
         </button>
 
-        <md-chip-list class="page-number">
+        <!-- <md-chip-list class="page-number">
             <md-chip class="page-number-chip">
                 {{paginator.paggingOptions.pageNumber}}
             </md-chip>
-        </md-chip-list>
+        </md-chip-list> -->
+
+        <div #pageNumbersContainerTest class="page-numbers-panel">
+
+        </div>
 
         <button md-icon-button (click)="paginator.nextPage()" [disabled]="!paginator.paggingResult.canNext" mdTooltip="Вперёд">
             <md-icon>navigate_next</md-icon>

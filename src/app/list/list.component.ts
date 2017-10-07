@@ -38,6 +38,8 @@ export class ListComponent implements OnInit {
   filteredProducts: Array<Product>;
   searchText: string;
   productHistory: Array<Product>;
+  productHistoryTotal: number;
+
   productCardRoute = 'card';
 
   constructor(

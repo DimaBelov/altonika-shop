@@ -1,10 +1,12 @@
 import { Observable } from 'rxjs/Rx';
+import { OnChanges, SimpleChanges } from '@angular/core';
 
 import { PaggingOptions } from '@entities/pagging-options';
 import { PaggingResult } from '@entities/pagging-result';
 import { AsyncCommand } from '@lib/async-command';
+import { Logger } from '@services/logger';
 
-export class Paginator<T> {
+export class Paginator<T> implements OnChanges {
     pageSizeOptions = [25, 50, 75];
     paggingOptions: PaggingOptions = {
         pageNumber: 1,
@@ -22,6 +24,10 @@ export class Paginator<T> {
             () => this.onPaggingChanged(this.paggingOptions),
             (r, e) => this.pageComplete(r, e)
         );
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        Logger.log('Paginator ngOnChanges', changes);
     }
 
     page() {
@@ -63,6 +69,7 @@ export class Paginator<T> {
     }
 
     selectPage(n: number) {
+        Logger.log('paginator selectPage', n);
         this.paggingOptions.pageNumber = n;
         this.page();
     }
