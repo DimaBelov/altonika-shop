@@ -8,6 +8,7 @@ export class Product extends NamedEntity {
     description: string;
     imageSource: string;
     isDeleted: boolean;
+    isFavorite: boolean;
     
     constructor() {
         super();

@@ -8,6 +8,7 @@ import { SearchHistoryService } from '@services/search-history.service';
 import { ListComponent } from './list/list.component';
 import { WaitSpinner } from '@services/wait-spinner';
 import { Logger } from '@services/logger';
+import { FavoritesService } from '@services/favorites.service';
 
 @Component({
   selector: 'app-root',
@@ -43,7 +44,8 @@ export class AppComponent implements OnInit {
     private _userService: UserService,
     private _basketService: BasketService,
     private _productHistoryService: ProductHistoryService,
-    private _searchHistoryService: SearchHistoryService) {
+    private _searchHistoryService: SearchHistoryService,
+    private _favoritesService: FavoritesService) {
 
     this.routes = _router.config;
 
@@ -59,7 +61,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this._basketService.init();
     this._productHistoryService.init();
-    this._searchHistoryService.init();
+    this._searchHistoryService.init(); 
+    this._favoritesService.init();
 
     this.basketTotal = this._basketService.totalCount();
     this._basketService.onItemAdded.subscribe(total => {

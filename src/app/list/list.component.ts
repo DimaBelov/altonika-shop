@@ -14,11 +14,16 @@ import { Messenger } from '@services/messenger';
 import { Logger } from '@services/logger';
 import { AsyncCommand } from '@lib/async-command';
 import { Paginator } from '@services/paginator';
+import { FavoritesService } from '@services/favorites.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
+  styleUrls: [
+    // './list.component.css', 
+    './new-list.component.css', 
+    './product-history.css'
+  ],
   encapsulation: ViewEncapsulation.None
 })
 export class ListComponent implements OnInit {
@@ -42,6 +47,7 @@ export class ListComponent implements OnInit {
     private _productHistoryService: ProductHistoryService,
     private _dialog: MdDialog,
     private _messenger: Messenger,
+    public favoritesService: FavoritesService,
     public basketService: BasketService) {
     this.filteredProducts = new Array<Product>();
   }
@@ -73,6 +79,7 @@ export class ListComponent implements OnInit {
       return;
     }
     this.filteredProducts = result.items;
+    this.filteredProducts.forEach(p => p.isFavorite = this.favoritesService.contains(p));  //TODO
   }
 
   openProductCard(product: Product) {

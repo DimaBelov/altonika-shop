@@ -1,37 +1,39 @@
 <div class="component-panel" *ngIf="!paginator.pageCommand.isBusy">
 
   <p *ngIf="filteredProducts && filteredProducts.length == 0" class="no-product-text">Извините, ничего не найдено</p>
-  <md-grid-list cols="4" rowHeight="350px" #grid>
-    <md-grid-tile
-        *ngFor="let product of filteredProducts"
-        [colspan]="1"
-        [rowspan]="1">
+  <md-grid-list cols="5" rowHeight="290px" #grid>
+    <md-grid-tile *ngFor="let product of filteredProducts" [colspan]="1" [rowspan]="1">
       <div class="product-card">
-        <div id="{{product.id}}"
-          onmouseenter="$('#btn' + this.id).show();"
-          onmouseleave="$('#btn' + this.id).hide()"> 
-          <img class="product-card-img" 
-            src="{{product.imageSource}}" 
-            alt="Изображение не найдено({{product.id}})"
-            onError="this.src = 'img-not-found.jpg'"
+        <div id="{{product.id}}" onmouseenter="$('#btn' + this.id).show();" onmouseleave="$('#btn' + this.id).hide()">
+          <img class="product-card-img" src="{{product.imageSource}}" alt="Изображение не найдено({{product.id}})" onError="this.src = 'img-not-found.jpg'"
             (click)="openProductCard(product)">
           <button md-raised-button id="btn{{product.id}}" class="show-btn" (click)="openProductCardDialog(product)">
             Быстрый просмотр
           </button>
         </div>
         <div class="product-title">
-          <a class="product-title-link" href='card?id={{product.id}}'
-            mdTooltip="{{product.name}}" mdTooltipPosition="above">
+          <a class="product-title-link" href='card?id={{product.id}}' mdTooltip="{{product.name}}" mdTooltipPosition="above">
             {{product.name}}
           </a>
         </div>
-        <div>
-          <button md-raised-button color="primary" class="basket-btn" 
-            (click)="basketService.putIn(product)"
-            *ngIf="!product.isDeleted">
+
+        <div class="product-card-button-pannel-left">
+          <button md-button color="primary" class="product-card-button basket" (click)="basketService.putIn(product)" *ngIf="!product.isDeleted"
+            mdTooltip="Добавить в корзину">
             В корзину
           </button>
+          <!-- <button md-icon-button color="primary" class="product-card-button" (click)="basketService.putIn(product)" *ngIf="!product.isDeleted"
+            mdTooltip="Добавить в корзину">
+            <md-icon>add_shopping_cart</md-icon>
+          </button> -->
           <p *ngIf="product.isDeleted" class="is-deleted-text">Нет в наличии</p>
+        </div>
+
+        <div class="product-card-button-pannel-right">
+          <button md-icon-button class="product-card-button" mdTooltip="{{ product.isFavorite ? 'Убрать из избранного' : 'Добавить в избранное' }}"
+            (click)="product.isFavorite ? favoritesService.delete(product) : favoritesService.add(product)" [ngClass]="product.isFavorite ? 'fav-yes' : 'fav-no'">
+            <md-icon>{{ product.isFavorite ? 'star' : 'star_border'}}</md-icon>
+          </button>
         </div>
       </div>
     </md-grid-tile>
@@ -42,22 +44,15 @@
   <div class="history">
     <h5>Недавно Вы смотрели:</h5>
     <md-grid-list cols="5" rowHeight="248px" #grid>
-      <md-grid-tile
-          *ngFor="let product of productHistory"
-          [colspan]="1"
-          [rowspan]="1">
+      <md-grid-tile *ngFor="let product of productHistory" [colspan]="1" [rowspan]="1">
         <div class="history-product-card">
-            <img class="history-product-card-img" 
-              src="{{product.imageSource}}" 
-              alt="Изображение не найдено({{product.id}})"
-              onError="this.src = 'img-not-found.jpg'"
-              (click)="openProductCard(product)">
-            <div class="history-product-title">
-              <a class="product-title-link history-product-title-link" href='card?id={{product.id}}'
-                mdTooltip="{{product.name}}" mdTooltipPosition="above">
-                {{product.name}}
-              </a>
-            </div>
+          <img class="history-product-card-img" src="{{product.imageSource}}" alt="Изображение не найдено({{product.id}})" onError="this.src = 'img-not-found.jpg'"
+            (click)="openProductCard(product)">
+          <div class="history-product-title">
+            <a class="product-title-link history-product-title-link" href='card?id={{product.id}}' mdTooltip="{{product.name}}" mdTooltipPosition="above">
+              {{product.name}}
+            </a>
+          </div>
         </div>
       </md-grid-tile>
     </md-grid-list>

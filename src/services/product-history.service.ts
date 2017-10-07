@@ -25,12 +25,15 @@ export class ProductHistoryService {
 
     getN(n: number) {
         let history = this.get();
+        let nHistory: Array<Product>;
 
         if (history.length <= n) {
-            return history;
+            nHistory = history;
+        } else {
+            nHistory = history.slice(history.length - n, history.length);
         }
 
-        return history.slice(history.length - n, history.length).reverse();
+        return nHistory.reverse();
     }
 
     add(product: Product) {

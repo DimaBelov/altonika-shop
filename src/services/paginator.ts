@@ -5,10 +5,10 @@ import { PaggingResult } from '@entities/pagging-result';
 import { AsyncCommand } from '@lib/async-command';
 
 export class Paginator<T> {
-    pageSizeOptions = [12, 24, 36, 48];
+    pageSizeOptions = [25, 50, 75];
     paggingOptions: PaggingOptions = {
         pageNumber: 1,
-        pageSize: 12,
+        pageSize: this.pageSizeOptions[0],
         searchText: ''
     };
     paggingResult: PaggingResult<T>;

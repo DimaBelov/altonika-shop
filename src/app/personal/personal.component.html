@@ -10,6 +10,7 @@
   <md-expansion-panel>
       <md-expansion-panel-header>
         <md-panel-title>
+          <md-icon class="panel-title-icon" color="primary">view_list</md-icon>
           Мои заказы
         </md-panel-title>
       </md-expansion-panel-header>
@@ -52,6 +53,47 @@
   
     </md-expansion-panel>
 
+    <md-expansion-panel>
+        <md-expansion-panel-header>
+          
+          <md-panel-title>
+            <md-icon class="panel-title-icon fav">star</md-icon>
+            Избранное
+          </md-panel-title>
+        </md-expansion-panel-header>
+    
+        <!-- <table class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let fav of favorites">
+                <td>
+                  <img class="detail-img" 
+                    src="{{fav.imageSource}}" 
+                    alt="Изображение не найдено({{fav.id}})" 
+                    onError="this.src = 'img-not-found.jpg'"
+                    (click)="openProductCardDialog(fav)">
+                </td>
+                <td class="text-cell">{{fav.name}}</td>
+              </tr>
+            </tbody>
+          </table> -->
 
+          <md-list>
+            <md-list-item *ngFor="let fav of favorites">
+                <img class="detail-img"
+                  src="{{fav.imageSource}}" 
+                  alt="Изображение не найдено({{fav.id}})" 
+                  onError="this.src = 'img-not-found.jpg'"
+                  (click)="openProductCardDialog(fav)">
+                <h5 class="fav-product-title">{{fav.name}}</h5>
+            </md-list-item>
+          </md-list>
+    
+      </md-expansion-panel>
   
 </div>

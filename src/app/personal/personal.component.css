@@ -7,3 +7,23 @@
 .text-cell {
     line-height: 100px;
 }
+
+.mat-expansion-panel-header-title {
+    line-height: 24px;
+}
+
+.panel-title-icon {
+    margin-right: 10px;
+}
+
+.panel-title-icon.fav {
+    color: goldenrod;
+}
+
+.mat-list-item-content {
+    height: 100px !important;
+}
+
+.fav-product-title {
+    margin-left: 10px;
+}

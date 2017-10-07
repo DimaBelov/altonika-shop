@@ -25,6 +25,7 @@ import { ProductCardDialogComponent } from './product-card-dialog/product-card-d
 import { OrderService } from '@services/order.service';
 import { ProductHistoryService } from '@services/product-history.service';
 import { SearchHistoryService } from '@services/search-history.service';
+import { FavoritesService } from '@services/favorites.service';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PersonalComponent } from './personal/personal.component';
 import { PaginatorPanel } from '@lib/paginator-panel/paginator-panel';
@@ -32,6 +33,7 @@ import { GlobalErrorHandler } from '@services/global.error.handler';
 import { Messenger, MessengerComponent } from '@services/messenger';
 import { WaitSpinner } from '@services/wait-spinner';
 import { Logger } from '@services/logger';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { Logger } from '@services/logger';
     ProductCardComponent,
     PersonalComponent,
     MessengerComponent,
-    PaginatorPanel
+    PaginatorPanel,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { Logger } from '@services/logger';
     SearchHistoryService,
     Messenger,
     WaitSpinner,
-    Logger
+    Logger,
+    FavoritesService
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   bootstrap: [AppComponent],
