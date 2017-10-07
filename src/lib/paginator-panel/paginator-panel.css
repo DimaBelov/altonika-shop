@@ -11,28 +11,18 @@
 
 .paginator p {
   float: left;
-  height: 40px;
-  line-height: 40px;
   text-align: center;
-  margin: 0 5px 0 5px;
-}
-
-.paginator .page-number {
-  float: left;
-  height: 40px;
+  /* height: 40px;
   line-height: 40px;
-  width: 182px;
-  text-align: center;
-  margin: 0;
-  overflow: hidden;
-}
+  margin: 0 5px 0 5px; */
 
-.page-number-chip {
-  margin: auto;
+  height: 30px;
+  line-height: 30px;
+  margin: 5px;
 }
 
 .paginator .next-prev-panel {
-  width: 352px;
+  width: 370px;
   margin: auto;
 }
 
@@ -56,7 +46,7 @@
 .page-numbers-panel {
   margin-left: 10px;
   height: 40px;
-  width: 182px;
+  width: 200px;
   float: left;
 }
 
@@ -82,5 +72,9 @@
 .page-numbers-panel-btn.selected {
   background: #3f51b5;
   color: white;
+}
+
+.page-numbers-separator {
+    width: 30px;
 }
 

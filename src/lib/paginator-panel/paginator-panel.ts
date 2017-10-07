@@ -44,8 +44,8 @@ export class PaginatorPanel implements OnAll {
         let top = currentPage + 2;
         let diff = resultPageNumbers.length - currentPage;
 
-        if (diff <= 2) {
-            bottom = currentPage - (2 - diff + 1);
+        if (diff <= 4) {
+            bottom = currentPage - (4 - diff);
             top = currentPage + diff;
         }
 
@@ -60,7 +60,7 @@ export class PaginatorPanel implements OnAll {
         let last = resultPageNumbers[resultPageNumbers.length - 1];
 
         if (i < last) {
-            html += '<p>...</p>';
+            html += '<p class="page-numbers-separator">...</p>';
         }
 
         html += this.getButton(last);
