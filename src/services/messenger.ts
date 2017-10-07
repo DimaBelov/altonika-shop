@@ -4,7 +4,7 @@ import { MdDialog, MdDialogConfig, MdDialogRef, MD_DIALOG_DATA } from '@angular/
 @Component({
     selector: 'app-messenger',
     template: 
-        '<div [ngStyle]="data.style" style=" width: 300px;">' + 
+        '<div [ngStyle]="data.style">' + 
             '<div style="height: 24px;">' + 
                 '<md-icon [ngStyle]="{color: data.iconColor, float: \'left\'}">{{data.icon}}</md-icon>' +
                 '<span style="height: 24px; line-height: 24px; margin-left: 5px;">' + 
@@ -32,11 +32,11 @@ export class Messenger {
 
     }
 
-    showInfo(message: string) {
+    showInfo(message: string, title?: string) {
         this._dialog.open(MessengerComponent,
             {
                 data: {
-                    title: 'Инфо',
+                    title: title != null ? title : 'Инфо',
                     message: message,
                     icon: 'info', /* error_outline */
                     iconColor: 'dodgerblue'
@@ -45,10 +45,11 @@ export class Messenger {
         );
     }
 
-    showSuccess(message: string) {
+    showSuccess(message: string, title?: string) {
         this._dialog.open(MessengerComponent,
             {
                 data: {
+                    title: title != null ? title : '',
                     message: message,
                     icon: 'check',  /* check_circle */
                     iconColor: 'forestgreen'

@@ -103,7 +103,16 @@
     color: goldenrod;
 }
 
+.product-card-button.fav-yes:hover {
+    color: rgba(218, 165, 32, 0.7);
+}
+
 .product-card-button.fav-no {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.product-card-button.fav-no:hover {
+    color: goldenrod;
 }
 
 .is-deleted-text {

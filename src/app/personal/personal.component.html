@@ -6,84 +6,90 @@
       <md-card-subtitle>{{user.login}}</md-card-subtitle>
     </md-card-header>
   </md-card>
-  
+
   <md-expansion-panel>
+    <md-expansion-panel-header>
+      <md-panel-title>
+        <md-icon class="panel-title-icon" color="primary">view_list</md-icon>
+        Мои заказы ({{orders != null ? orders.length : ''}})
+      </md-panel-title>
+    </md-expansion-panel-header>
+
+    <md-expansion-panel *ngFor="let order of orders">
       <md-expansion-panel-header>
         <md-panel-title>
-          <md-icon class="panel-title-icon" color="primary">view_list</md-icon>
-          Мои заказы
+          Заказ №{{order.id}}
         </md-panel-title>
+        <md-panel-description>
+          Количество: {{order.details != null ? order.details.length : ''}}.
+          Создан: {{order.createDate | date: 'dd:MM:y HH:mm:ss'}}
+        </md-panel-description>
       </md-expansion-panel-header>
-  
-      <md-expansion-panel *ngFor="let order of orders">
-          <md-expansion-panel-header>
-            <md-panel-title>
-              Заказ №{{order.id}}
-            </md-panel-title>
-            <md-panel-description>
-              Создан: {{order.createDate | date: 'dd:MM:y HH:mm:ss'}}
-            </md-panel-description>
-          </md-expansion-panel-header>
-          <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let detail of order.details">
-                  <td>
-                    <img class="detail-img" 
-                      src="{{detail.product.imageSource}}" 
-                      alt="Изображение не найдено({{detail.product.id}})" 
-                      onError="this.src = 'img-not-found.jpg'"
-                      (click)="openProductCardDialog(detail.product)">
-                  </td>
-                  <td class="text-cell">{{detail.product.name}}</td>
-                  <td class="text-cell" style="width: 175px;">
-                    {{detail.quantity}}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-      
-        </md-expansion-panel>
-  
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detail of order.details">
+            <td class="detail-img-cell">
+              <img class="detail-img" src="{{detail.product.imageSource}}" alt="Изображение не найдено({{detail.product.id}})" onError="this.src = 'img-not-found.jpg'"
+                (click)="openProductCardDialog(detail.product)">
+            </td>
+            <td class="text-cell"><p>{{detail.product.name}}</p></td>
+            <td class="text-cell">
+              <!-- <p class="order-quantity">{{detail.quantity}}</p> -->
+              <md-chip-list class="order-quantity">
+                <md-chip color="primary" selected="true">{{detail.quantity}}</md-chip>
+              </md-chip-list>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
     </md-expansion-panel>
 
-    <md-expansion-panel>
-        <md-expansion-panel-header>
-          
-          <md-panel-title>
-            <md-icon class="panel-title-icon fav">star</md-icon>
-            Избранное
-          </md-panel-title>
-        </md-expansion-panel-header>
-    
-        <!-- <table class="table table-hover">
-            <thead>
-              <tr>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let fav of favorites">
-                <td>
-                  <img class="detail-img" 
-                    src="{{fav.imageSource}}" 
-                    alt="Изображение не найдено({{fav.id}})" 
-                    onError="this.src = 'img-not-found.jpg'"
-                    (click)="openProductCardDialog(fav)">
-                </td>
-                <td class="text-cell">{{fav.name}}</td>
-              </tr>
-            </tbody>
-          </table> -->
+  </md-expansion-panel>
 
-          <md-list>
+  <md-expansion-panel>
+    <md-expansion-panel-header>
+
+      <md-panel-title>
+        <md-icon class="panel-title-icon fav">star</md-icon>
+        Избранное ({{favorites != null ? favorites.length : ''}})
+      </md-panel-title>
+    </md-expansion-panel-header>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fav of favorites">
+          <td class="detail-img-cell">
+            <img class="detail-img" src="{{fav.imageSource}}" alt="Изображение не найдено({{fav.id}})" onError="this.src = 'img-not-found.jpg'"
+              (click)="openProductCardDialog(fav)">
+          </td>
+          <td class="text-cell">
+            <h5 class="fav-product-title">{{fav.name}}</h5>
+          </td>
+          <td class="text-cell delete-btn-cell">
+            <button md-icon-button color="warn" (click)="deleteFav(fav)" class="remove-btn">
+              <md-icon mdTooltip="Удалить из избранного">clear</md-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- <md-list>
             <md-list-item *ngFor="let fav of favorites">
                 <img class="detail-img"
                   src="{{fav.imageSource}}" 
@@ -92,8 +98,8 @@
                   (click)="openProductCardDialog(fav)">
                 <h5 class="fav-product-title">{{fav.name}}</h5>
             </md-list-item>
-          </md-list>
-    
-      </md-expansion-panel>
-  
+          </md-list> -->
+
+  </md-expansion-panel>
+
 </div>

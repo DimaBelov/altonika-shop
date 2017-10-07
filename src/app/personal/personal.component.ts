@@ -57,4 +57,9 @@ export class PersonalComponent implements OnInit {
     let dialogRef = this._dialog.open(ProductCardDialogComponent);
     dialogRef.componentInstance.product = product;
   }
+
+  deleteFav(fav: Product) {
+    this._favoritesService.delete(fav);
+    this.getFavoritesCommand.execute();
+  }
 }

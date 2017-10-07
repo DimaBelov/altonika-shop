@@ -29,10 +29,23 @@
           <p *ngIf="product.isDeleted" class="is-deleted-text">Нет в наличии</p>
         </div>
 
+        <script type="text/javascript">
+          favBtnOnMouseEnter = function(favBtn) {
+            if ($(favBtn).hasClass('fav-no')) {
+              $('#' + favBtn.id + 'Icon').remove();
+              $(favBtn).append('<md-icon id="favBtn{{product.id}}Icon">star</md-icon>')
+            }
+          }
+        </script>
         <div class="product-card-button-pannel-right">
           <button md-icon-button class="product-card-button" mdTooltip="{{ product.isFavorite ? 'Убрать из избранного' : 'Добавить в избранное' }}"
-            (click)="product.isFavorite ? favoritesService.delete(product) : favoritesService.add(product)" [ngClass]="product.isFavorite ? 'fav-yes' : 'fav-no'">
-            <md-icon>{{ product.isFavorite ? 'star' : 'star_border'}}</md-icon>
+            (click)="product.isFavorite ? favoritesService.delete(product) : favoritesService.add(product)" 
+            [ngClass]="product.isFavorite ? 'fav-yes' : 'fav-no'"
+            id="favBtn{{product.id}}"
+            onmouseenter="if($(this).hasClass('fav-no')) {$('#' + this.id + 'Icon').html('star');}"
+            onmouseleave="if($(this).hasClass('fav-no')) {$('#' + this.id + 'Icon').html('star_border');}"
+            >
+            <md-icon id="favBtn{{product.id}}Icon">{{ product.isFavorite ? 'star' : 'star_border'}}</md-icon>
           </button>
         </div>
       </div>
