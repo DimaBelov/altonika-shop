@@ -4,6 +4,7 @@ import {MdSnackBar } from '@angular/material';
 import { NotificationsService } from 'angular2-notifications';
 import { UserService } from '@services/user.service';
 import { User } from '@entities/user';
+import { AsyncCommand } from '@lib/async-command';
 
 @Component({
   selector: 'app-login',

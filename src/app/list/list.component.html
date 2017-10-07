@@ -1,7 +1,10 @@
-<div class="spinner-outer-container">
-  <div class="spinner-inner-container">
-    <mat-progress-spinner class="spinner" color="primary" [mode]="spinnerMode" *ngIf="spinnerMode == 'indeterminate'"></mat-progress-spinner>
-  </div>
+<div class="spinner-container">
+    <mat-progress-spinner 
+      class="spinner" 
+      color="primary" 
+      [mode]="refreshCommand.isBusy ? 'indeterminate' : 'determinate'" 
+      *ngIf="refreshCommand.isBusy">
+  </mat-progress-spinner>
 </div>
 
 <div class="component-panel">
@@ -86,7 +89,7 @@
   </div>
 
   <div class="history">
-    <h4>Недавно Вы смотрели:</h4>
+    <h5>Недавно Вы смотрели:</h5>
     <md-grid-list cols="10" rowHeight="148px" #grid>
       <md-grid-tile
           *ngFor="let product of productHistory"

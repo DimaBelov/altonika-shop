@@ -11,7 +11,8 @@
     "baseUrl": ".",
     "paths": {
         "@entities/*": ["src/entities/*"],
-        "@services/*": ["src/services/*"]
+        "@services/*": ["src/services/*"],
+        "@lib/*": ["src/lib/*"]
     },
     "typeRoots": [
       "node_modules/@types"

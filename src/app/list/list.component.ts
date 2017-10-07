@@ -11,6 +11,7 @@ import { ProductCardDialogComponent } from '../product-card-dialog/product-card-
 import { PaggingOptions } from '@entities/pagging-options';
 import { PaggingResult } from '@entities/pagging-result';
 import { Messenger } from '@services/messenger';
+import { AsyncCommand } from '@lib/async-command';
 
 @Component({
   selector: 'app-list',
@@ -36,7 +37,11 @@ export class ListComponent implements OnInit {
 
   pageSizeOptions = [12, 24, 36, 48];
   paggingResult: PaggingResult<Product>;
-  spinnerMode = 'determinate';
+
+  refreshCommand = new AsyncCommand<PaggingResult<Product>>(
+    () => this.refresh(),
+    (r, e) => this.refreshComplete(r, e)
+  );
 
   constructor(
     private _router: Router,
@@ -46,7 +51,6 @@ export class ListComponent implements OnInit {
     private _productHistoryService: ProductHistoryService,
     private _dialog: MdDialog,
     private _messenger: Messenger) {
-
       this.filteredProducts = new Array<Product>();
       this.paggingResult = new PaggingResult<Product>();
     }
@@ -56,50 +60,32 @@ export class ListComponent implements OnInit {
       ListComponent.paggingOptions.searchText = params['search'];
       ListComponent.lastSearch = ListComponent.paggingOptions.searchText;
       ListComponent.paggingOptions.pageNumber = 1;
-      this.refresh();
+      this.refreshCommand.execute();
     });
   }
-  
+
   refresh() {
-    this.showSpinner();
-    this._productService.get(ListComponent.paggingOptions)
-      .subscribe(
-        data => {
-          this.hideSpinner();
-          console.log('data');
-          console.log(data);
-
-          this.paggingResult = data;
-          this.products = data.items;
-          this.filteredProducts = this.products;
-
-          this.productHistory = this._productHistoryService.getN(10);
-          console.log('productHistory');
-          console.log(this.productHistory);
-        },
-        error => {
-          this.hideSpinner();
-          console.log('get products error');
-          console.log(error);
-          // this._messenger.onError(error, 'get products error');
-        }
-      );
+    return this._productService.get(ListComponent.paggingOptions);
   }
 
-  showSpinner() {
+  refreshComplete(result: PaggingResult<Product>, error: any) {
+    if (error != null) {
+      console.log('get products error');
+      console.log(error);
+      // this._messenger.onError(error, 'get products error');
+      return;
+    }    
 
-    // document.getElementsByTagName('app-list')[0].innerHTML += 
-    // '<div id="spenner" style="position:absolute;width:100%;height:100%;opacity:0.3;z-index:100;background:#000;">' + 
-    //   '<div style="height: 100px; width: 100px; margin: auto;">' +
-    //     '<mat-progress-spinner color="primary" mode="indeterminate">' + 
-    //   '</div>' +
-    // '</mat-progress-spinner></div>';
-    
-    this.spinnerMode = 'indeterminate';
-  }
+    console.log('data');
+    console.log(result);
 
-  hideSpinner() {
-    this.spinnerMode = 'determinate';
+    this.paggingResult = result;
+    this.products = result.items;
+    this.filteredProducts = this.products;
+
+    this.productHistory = this._productHistoryService.getN(10);
+    console.log('productHistory');
+    console.log(this.productHistory);
   }
 
   get paggingOptionsStatic () {
@@ -110,7 +96,7 @@ export class ListComponent implements OnInit {
     console.log('paggingChange');
     console.log(ListComponent.paggingOptions);
 
-    this.refresh();
+    this.refreshCommand.execute();
   }
 
   prevPage() {
