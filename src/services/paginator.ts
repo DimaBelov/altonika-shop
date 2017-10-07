@@ -74,3 +74,4 @@ export class Paginator<T> implements OnChanges {
         this.page();
     }
 }
+

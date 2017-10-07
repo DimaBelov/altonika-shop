@@ -27,13 +27,11 @@ import { ProductHistoryService } from '@services/product-history.service';
 import { SearchHistoryService } from '@services/search-history.service';
 import { FavoritesService } from '@services/favorites.service';
 import { ProductCardComponent } from './product-card/product-card.component';
-import { PersonalComponent } from './personal/personal.component';
 import { PaginatorPanel } from '@lib/paginator-panel/paginator-panel';
 import { GlobalErrorHandler } from '@services/global.error.handler';
 import { Messenger, MessengerComponent } from '@services/messenger';
 import { WaitSpinner } from '@services/wait-spinner';
 import { Logger } from '@services/logger';
-import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -43,10 +41,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     BasketComponent,
     ProductCardDialogComponent,
     ProductCardComponent,
-    PersonalComponent,
     MessengerComponent,
-    PaginatorPanel,
-    FavoritesComponent
+    PaginatorPanel
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,7 @@ export class Logger {
         if (error.error != null && error.error.exception != null) {
             errorText =
                 Logger.getUrlInfo(error) + '\n' +
-                'message: ' + error.error.exception.message + '\n'
+                'message: ' + error.error.exception.message + '\n';
             stackTrace = { stackTrace: error.error.exception.stackTrace };
         } else {
             errorText =
