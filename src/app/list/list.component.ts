@@ -68,7 +68,7 @@ export class ListComponent implements OnInit {
   }
 
   refreshComplete(result: PaggingResult<Product>, error: any) {
-    this.productHistory = this._productHistoryService.getN(10);
+    this.productHistory = this._productHistoryService.getN(5);
     if (error != null) {
       return;
     }
