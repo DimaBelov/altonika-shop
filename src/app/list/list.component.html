@@ -1,11 +1,13 @@
-<div class="spinner-container">
+<!-- <div class="spinner-container">
     <mat-progress-spinner 
       class="spinner" 
       color="primary" 
       [mode]="refreshCommand.isBusy ? 'indeterminate' : 'determinate'" 
       *ngIf="refreshCommand.isBusy">
   </mat-progress-spinner>
-</div>
+</div> -->
+
+<div id="appWaitSpinnerDiv" #appWaitSpinnerDiv appWaitSpinner [command]="refreshCommand"></div>
 
 <div class="component-panel">
 

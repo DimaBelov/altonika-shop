@@ -53,7 +53,7 @@ export class ListComponent implements OnInit {
     private _messenger: Messenger) {
       this.filteredProducts = new Array<Product>();
       this.paggingResult = new PaggingResult<Product>();
-    }
+  }
 
   ngOnInit() {
     this._route.queryParams.subscribe(params => {

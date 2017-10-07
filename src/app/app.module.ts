@@ -27,6 +27,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { PersonalComponent } from './personal/personal.component';
 import { GlobalErrorHandler } from '@services/global.error.handler';
 import { Messenger, MessengerComponent } from '@services/messenger';
+import { WaitSpinnerDirective } from '@lib/wait-spinner';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { Messenger, MessengerComponent } from '@services/messenger';
     ProductCardDialogComponent,
     ProductCardComponent,
     PersonalComponent,
-    MessengerComponent
+    MessengerComponent,
+    WaitSpinnerDirective
   ],
   imports: [
     BrowserModule,
