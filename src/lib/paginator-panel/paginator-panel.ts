@@ -35,26 +35,29 @@ export class PaginatorPanel implements OnAll {
         if (this.pageNumbersContainerTest == null) {
             return;
         }
+        
         let html = '';
         let currentPage = this.paginator.paggingOptions.pageNumber;
         let resultPageNumbers = this.paginator.paggingResult.pageNumbers;
-
-        let i: number;
+        let minStep = 2;
+        let maxStep = 4;
         let bottom = currentPage;
-        let top = currentPage + 2;
+        let top = currentPage + minStep;
         let diff = resultPageNumbers.length - currentPage;
+        let magic = resultPageNumbers.length >= maxStep ?
+            maxStep : resultPageNumbers.length;
 
-        if (diff <= 4) {
-            bottom = currentPage - (4 - diff);
+        if (diff <= magic) {
+            bottom = currentPage - (magic - diff);
             top = currentPage + diff;
         }
 
+        let i: number;
         for (i = bottom; i <= top; i++) {
             if (i === 0 || i >= resultPageNumbers.length) {
                 continue;
             }
             html += this.getButton(i);
-            Logger.log(html);
         }
 
         let last = resultPageNumbers[resultPageNumbers.length - 1];
