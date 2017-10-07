@@ -1,17 +1,6 @@
-<!-- <div class="spinner-container">
-    <mat-progress-spinner 
-      class="spinner" 
-      color="primary" 
-      [mode]="refreshCommand.isBusy ? 'indeterminate' : 'determinate'" 
-      *ngIf="refreshCommand.isBusy">
-  </mat-progress-spinner>
-</div> -->
+<div class="component-panel" *ngIf="!refreshCommand.isBusy">
 
-<div id="appWaitSpinnerDiv" #appWaitSpinnerDiv appWaitSpinner [command]="refreshCommand"></div>
-
-<div class="component-panel">
-
-  <p *ngIf="filteredProducts && filteredProducts.length == 0 && spinnerMode != 'indeterminate'" class="no-product-text">Извините, ничего не найдено</p>
+  <p *ngIf="filteredProducts && filteredProducts.length == 0" class="no-product-text">Извините, ничего не найдено</p>
   <md-grid-list cols="4" rowHeight="350px" #grid>
     <md-grid-tile
         *ngFor="let product of filteredProducts"

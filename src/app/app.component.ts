@@ -5,6 +5,7 @@ import { UserService } from '@services/user.service';
 import { BasketService } from '@services/basket.service';
 import { ProductHistoryService } from '@services/product-history.service';
 import { ListComponent } from './list/list.component';
+import { WaitSpinner } from '@services/wait-spinner';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
   listUrl = '/list';
   routes: any;
   basketTotal: number;
+  showSpinner = false;
 
   @ViewChild(MdSidenav) sidenav: MdSidenav;
 
@@ -62,6 +64,8 @@ export class AppComponent implements OnInit {
     if (lastSearch !== null) {
       this.searchText = lastSearch;
     }
+
+    WaitSpinner.status.subscribe(b => setTimeout(() => this.showSpinner = b, 0));
   }
 
   checkUser() {

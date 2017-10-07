@@ -11,6 +11,7 @@ import { ProductCardDialogComponent } from '../product-card-dialog/product-card-
 import { PaggingOptions } from '@entities/pagging-options';
 import { PaggingResult } from '@entities/pagging-result';
 import { Messenger } from '@services/messenger';
+import { Logger } from '@services/logger';
 import { AsyncCommand } from '@lib/async-command';
 
 @Component({
@@ -29,7 +30,6 @@ export class ListComponent implements OnInit {
     searchText: ''
   };
 
-  products: Array<Product>;
   filteredProducts: Array<Product>;
   searchText: string;
   productHistory: Array<Product>;
@@ -46,22 +46,27 @@ export class ListComponent implements OnInit {
   constructor(
     private _router: Router,
     private _route: ActivatedRoute,
-    private _productService: ProductService, 
+    private _productService: ProductService,
     private _basketService: BasketService,
     private _productHistoryService: ProductHistoryService,
     private _dialog: MdDialog,
     private _messenger: Messenger) {
-      this.filteredProducts = new Array<Product>();
-      this.paggingResult = new PaggingResult<Product>();
+    this.filteredProducts = new Array<Product>();
+    this.paggingResult = new PaggingResult<Product>();
   }
 
   ngOnInit() {
     this._route.queryParams.subscribe(params => {
-      ListComponent.paggingOptions.searchText = params['search'];
-      ListComponent.lastSearch = ListComponent.paggingOptions.searchText;
-      ListComponent.paggingOptions.pageNumber = 1;
+      this.onSearchChanged(params['search']);
       this.refreshCommand.execute();
     });
+  }
+
+  onSearchChanged(searchParam: string) {
+    ListComponent.lastSearch =
+      ListComponent.paggingOptions.searchText =
+      searchParam;
+    ListComponent.paggingOptions.pageNumber = 1;
   }
 
   refresh() {
@@ -70,91 +75,69 @@ export class ListComponent implements OnInit {
 
   refreshComplete(result: PaggingResult<Product>, error: any) {
     if (error != null) {
-      console.log('get products error');
-      console.log(error);
-      // this._messenger.onError(error, 'get products error');
       return;
-    }    
-
-    console.log('data');
-    console.log(result);
+    }
 
     this.paggingResult = result;
-    this.products = result.items;
-    this.filteredProducts = this.products;
-
+    this.filteredProducts = result.items;
     this.productHistory = this._productHistoryService.getN(10);
-    console.log('productHistory');
-    console.log(this.productHistory);
   }
 
-  get paggingOptionsStatic () {
+  get paggingOptionsStatic() {
     return ListComponent.paggingOptions;
   }
 
   paggingChange() {
-    console.log('paggingChange');
-    console.log(ListComponent.paggingOptions);
-
     this.refreshCommand.execute();
   }
 
   prevPage() {
     ListComponent.paggingOptions.pageNumber -= 1;
-    //this.scrollPageNumber();
     this.paggingChange();
   }
 
   nextPage() {
     ListComponent.paggingOptions.pageNumber += 1;
-    //this.scrollPageNumber();
     this.paggingChange();
   }
 
   firstPage() {
     ListComponent.paggingOptions.pageNumber = 1;
-    //this.scrollPageNumber();
     this.paggingChange();
   }
 
   lastPage() {
-    ListComponent.paggingOptions.pageNumber = 
+    ListComponent.paggingOptions.pageNumber =
       this.paggingResult.pageNumbers.slice(
-        this.paggingResult.pageNumbers.length - 1, 
+        this.paggingResult.pageNumbers.length - 1,
         this.paggingResult.pageNumbers.length)
       [0];
-    //this.scrollPageNumber();
     this.paggingChange();
   }
 
-  pageSizeChange () {
+  pageSizeChange() {
     ListComponent.paggingOptions.pageNumber = 1;
-    //this.scrollPageNumber();
     this.paggingChange();
   }
 
   selectPage(n: number) {
     ListComponent.paggingOptions.pageNumber = n;
-    //this.scrollPageNumber();
     this.paggingChange();
   }
 
-  scrollPageNumber() {
-    let pageNumberElemet = document.getElementById('page' + ListComponent.paggingOptions.pageNumber);
-    console.log('pageNumberElemet');
-    console.log(pageNumberElemet);
-    pageNumberElemet.scrollIntoView({block: 'center', inline: 'center'});
-  }
+  // scrollPageNumber() {
+  //   let pageNumberElemet = document.getElementById('page' + ListComponent.paggingOptions.pageNumber);
+  //   console.log('pageNumberElemet');
+  //   console.log(pageNumberElemet);
+  //   pageNumberElemet.scrollIntoView({ block: 'center', inline: 'center' });
+  // }
 
   putInBasket(product: Product) {
-    console.log('putInBasket');
-    console.log(product);
-
     this._basketService.putIn(product);
   }
 
   openProductCard(product: Product) {
-    this._router.navigate([this.productCardRoute], {queryParams: {'id': product.id}});
+    this._router.navigate([this.productCardRoute], { queryParams: { 'id': product.id } });
     this._productHistoryService.add(product);
   }
 
