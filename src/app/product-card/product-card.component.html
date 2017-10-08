@@ -14,18 +14,49 @@
       src="{{product.imageSource}}" 
       alt="Изображение не найдено({{product.id}})"
       onError="this.src = 'img-not-found.jpg'">
-    <div>
-      <button md-raised-button color="primary" class="basket-btn" 
-        (click)="basketService.putIn(product)"
-        *ngIf="!product.isDeleted">
-        В корзину
-      </button>
-      <p *ngIf="product.isDeleted" class="is-deleted-text">Нет в наличии</p>
-    </div>
+      <div>
+
+        <div style="float: left;">
+            <button md-raised-button color="primary" class="basket-btn" 
+            (click)="basketService.putIn(product)"
+            *ngIf="!product.isDeleted">
+            В корзину
+          </button>
+          <p *ngIf="product.isDeleted" class="is-deleted-text">Нет в наличии</p>
+        </div>
+
+        <div  style="float: right;">
+            <button md-icon-button class="product-card-button" mdTooltip="{{ product.isFavorite ? 'Убрать из избранного' : 'Добавить в избранное' }}"
+            (click)="product.isFavorite ? favoritesService.delete(product) : favoritesService.add(product)" 
+            [ngClass]="product.isFavorite ? 'fav-yes' : 'fav-no'"
+            id="favBtn{{product.id}}"
+            onmouseenter="if($(this).hasClass('fav-no')) {$('#' + this.id + 'Icon').html('star');}"
+            onmouseleave="if($(this).hasClass('fav-no')) {$('#' + this.id + 'Icon').html('star_border');}"
+            >
+            <md-icon id="favBtn{{product.id}}Icon">{{ product.isFavorite ? 'star' : 'star_border'}}</md-icon>
+          </button>
+        </div>
+      </div>
   </div>
 
   <div class="product-description-container">
-    <h3 class="product-title">{{product.name}}</h3>
-    <p>{{product.description}}</p>
+    <div style="height: 375px;">
+        <h3 class="product-title">{{product.name}}</h3>
+        <p>{{product.description}}</p>
+    </div>
+    <!-- <div>
+      <div  style="float: left; margin: 5px;">
+
+      </div>
+      
+      <div  style="float: right; margin: 5px;">
+          <button md-raised-button color="primary" class="basket-btn" 
+          (click)="basketService.putIn(product)"
+          *ngIf="!product.isDeleted">
+          В корзину
+        </button>
+        <p *ngIf="product.isDeleted" class="is-deleted-text">Нет в наличии</p>
+      </div>
+    </div> -->
   </div>
 </div>
