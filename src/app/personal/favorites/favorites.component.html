@@ -1,35 +1,36 @@
 <div class="favorites-component">
     <md-card>
         <md-card-header>
-            <md-card-title><h4>Избранное ({{favorites != null ? favorites.length : ''}})</h4></md-card-title>
-          </md-card-header>
-          <md-card-content>
-              <table class="table table-hover">
-                  <!-- <thead>
+            <md-card-title>
+                <h4>Избранное ({{favorites != null ? favorites.length : ''}})</h4>
+            </md-card-title>
+        </md-card-header>
+        <md-card-content>
+            <table class="table table-hover">
+                <!-- <thead>
                     <tr>
                       <th></th>
                       <th></th>
                       <th></th>
                     </tr>
                   </thead> -->
-                  <tbody>
+                <tbody>
                     <tr *ngFor="let fav of favorites">
-                      <td class="detail-img-cell">
-                        <img class="detail-img" src="{{fav.imageSource}}" alt="Изображение не найдено({{fav.id}})" onError="this.src = 'img-not-found.jpg'"
-                          (click)="openProductCardDialog(fav)">
-                      </td>
-                      <td class="text-cell">
-                        <h5 class="fav-product-title">{{fav.name}}</h5>
-                      </td>
-                      <td class="text-cell delete-btn-cell">
-                        <button md-icon-button color="warn" (click)="deleteFav(fav)" class="remove-btn">
+                        <td class="detail-img-cell">
+                            <img class="detail-img" src="{{fav.imageSource}}" alt="Изображение не найдено({{fav.id}})" onError="this.src = 'img-not-found.jpg'" (click)="openProductCardDialog(fav)">
+                        </td>
+                        <td class="text-cell">
+                            <h5 class="fav-product-title">{{fav.name}}</h5>
+                        </td>
+                        <td class="text-cell delete-btn-cell">
+                            <button md-icon-button color="warn" (click)="deleteFav(fav)" class="remove-btn">
                           <md-icon mdTooltip="Удалить из избранного">clear</md-icon>
                         </button>
-                      </td>
+                        </td>
                     </tr>
-                  </tbody>
-                </table>
-          </md-card-content>
-        
+                </tbody>
+            </table>
+        </md-card-content>
+
     </md-card>
-</div>>
+</div>

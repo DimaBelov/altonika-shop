@@ -10,7 +10,6 @@ import { HttpModule } from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Ng2CompleterModule } from 'ng2-completer';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -54,8 +53,7 @@ import { Logger } from '@services/logger';
     MaterialModule,
     AccordionModule,
     HttpModule,
-    HttpClientModule,
-    Ng2CompleterModule
+    HttpClientModule
   ],
   providers: [
     {
