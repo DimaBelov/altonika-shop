@@ -26,7 +26,7 @@ import { ProductHistoryService } from '@services/product-history.service';
 import { SearchHistoryService } from '@services/search-history.service';
 import { FavoritesService } from '@services/favorites.service';
 import { ProductCardComponent } from './product-card/product-card.component';
-import { PaginatorPanel } from '@lib/paginator-panel/paginator-panel';
+import { PaginatorPanel } from '@lib/paginator/paginator-panel/paginator-panel';
 import { GlobalErrorHandler } from '@services/global.error.handler';
 import { Messenger, MessengerComponent } from '@services/messenger';
 import { WaitSpinner } from '@services/wait-spinner';
