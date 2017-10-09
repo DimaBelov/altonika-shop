@@ -1,0 +1,4 @@
+mkdir -p altonika-shop/frontend
+rm -r altonika-shop/frontend/*
+cd altonika-shop/frontend 
+put -r C:/Git/GitHub/altonika-shop/dist/.
