@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {MdSnackBar } from '@angular/material';
+import { MdSnackBar } from '@angular/material';
 import { NotificationsService } from 'angular2-notifications';
 import { UserService } from '@services/user.service';
 import { User } from '@entities/user';
