@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, Input, ViewEncapsulation, OnInit, OnChanges, SimpleChanges, AfterViewInit } from '@angular/core';
-import { Paginator } from '@services/paginator';
+import { Paginator } from '@lib/paginator/paginator';
 import { Logger } from '@services/logger';
 import * as $ from 'jquery';
 

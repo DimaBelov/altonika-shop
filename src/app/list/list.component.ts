@@ -13,7 +13,7 @@ import { PaggingResult } from '@entities/pagging-result';
 import { Messenger } from '@services/messenger';
 import { Logger } from '@services/logger';
 import { AsyncCommand } from '@lib/async-command';
-import { Paginator } from '@services/paginator';
+import { Paginator } from '@lib/paginator/paginator';
 import { FavoritesService } from '@services/favorites.service';
 
 @Component({

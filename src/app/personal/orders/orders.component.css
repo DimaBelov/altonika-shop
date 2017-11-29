@@ -1,0 +1,49 @@
+.order-component {
+    padding-top: 10px;
+}
+
+.detail-img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.detail-img-cell {
+    width: 66px;
+}
+
+.text-cell {
+    vertical-align: middle !important;
+}
+
+.text-cell p {
+    margin: 0;
+}
+
+.remove-btn {
+    float: right;
+}
+
+.order-quantity {
+    float: right;
+}
+
+.mat-expansion-panel-header-title {
+    line-height: 24px;
+}
+
+.panel-title-icon {
+    margin-right: 10px;
+}
+
+.panel-title-icon.fav {
+    color: goldenrod;
+}
+
+.panel-title-icon.order {
+    width: 75px;
+}
+
+.mat-list-item-content {
+    height: 50px !important;
+}

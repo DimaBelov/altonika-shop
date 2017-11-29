@@ -7,99 +7,31 @@
     </md-card-header>
   </md-card>
 
-  <md-expansion-panel>
-    <md-expansion-panel-header>
-      <md-panel-title>
-        <md-icon class="panel-title-icon" color="primary">view_list</md-icon>
-        Мои заказы ({{orders != null ? orders.length : ''}})
-      </md-panel-title>
-    </md-expansion-panel-header>
+  <div>
+    <!-- <md-card>
+      <md-card-content>
+    
+      </md-card-content>
+    </md-card> -->
 
-    <md-expansion-panel *ngFor="let order of orders">
-      <md-expansion-panel-header>
-        <md-panel-title class="panel-title-icon order">
-          Заказ №{{order.id}}
-        </md-panel-title>
-        <md-panel-description>
-          Количество: {{order.details != null ? order.details.length : ''}}.
-          Создан: {{order.createDate | date: 'dd:MM:y HH:mm:ss'}}
-        </md-panel-description>
-      </md-expansion-panel-header>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let detail of order.details">
-            <td class="detail-img-cell">
-              <img class="detail-img" src="{{detail.product.imageSource}}" alt="Изображение не найдено({{detail.product.id}})" onError="this.src = 'img-not-found.jpg'"
-                (click)="openProductCardDialog(detail.product)">
-            </td>
-            <td class="text-cell"><p>{{detail.product.name}}</p></td>
-            <td class="text-cell">
-              <!-- <p class="order-quantity">{{detail.quantity}}</p> -->
-              <md-chip-list class="order-quantity">
-                <md-chip color="primary" selected="true">{{detail.quantity}}</md-chip>
-              </md-chip-list>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="personal-menu">
+        <md-list>
+          <md-list-item class="personal-menu-item">
+            <md-icon color="primary">view_list</md-icon>
+            <a [routerLink]="['/personal/lk', {outlets: {'personal': ['orders']}}]">Мои заказы</a>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item  class="personal-menu-item">
+            <md-icon style="color: goldenrod">star</md-icon>
+            <a [routerLink]="['/personal/lk', {outlets: {'personal': ['fav']}}]">Избранное</a>
+          </md-list-item>
+          <md-divider></md-divider>
+        </md-list>
+      </div>
 
-    </md-expansion-panel>
-
-  </md-expansion-panel>
-
-  <md-expansion-panel>
-    <md-expansion-panel-header>
-
-      <md-panel-title>
-        <md-icon class="panel-title-icon fav">star</md-icon>
-        Избранное ({{favorites != null ? favorites.length : ''}})
-      </md-panel-title>
-    </md-expansion-panel-header>
-
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let fav of favorites">
-          <td class="detail-img-cell">
-            <img class="detail-img" src="{{fav.imageSource}}" alt="Изображение не найдено({{fav.id}})" onError="this.src = 'img-not-found.jpg'"
-              (click)="openProductCardDialog(fav)">
-          </td>
-          <td class="text-cell">
-            <h5 class="fav-product-title">{{fav.name}}</h5>
-          </td>
-          <td class="text-cell delete-btn-cell">
-            <button md-icon-button color="warn" (click)="deleteFav(fav)" class="remove-btn">
-              <md-icon mdTooltip="Удалить из избранного">clear</md-icon>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- <md-list>
-            <md-list-item *ngFor="let fav of favorites">
-                <img class="detail-img"
-                  src="{{fav.imageSource}}" 
-                  alt="Изображение не найдено({{fav.id}})" 
-                  onError="this.src = 'img-not-found.jpg'"
-                  (click)="openProductCardDialog(fav)">
-                <h5 class="fav-product-title">{{fav.name}}</h5>
-            </md-list-item>
-          </md-list> -->
-
-  </md-expansion-panel>
+    <div class="personal-outlet-container">
+      <router-outlet name="personal"></router-outlet>
+    </div>
+  </div>
 
 </div>

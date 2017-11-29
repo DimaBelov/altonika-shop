@@ -10,7 +10,6 @@ import { HttpModule } from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Ng2CompleterModule } from 'ng2-completer';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
@@ -27,13 +26,11 @@ import { ProductHistoryService } from '@services/product-history.service';
 import { SearchHistoryService } from '@services/search-history.service';
 import { FavoritesService } from '@services/favorites.service';
 import { ProductCardComponent } from './product-card/product-card.component';
-import { PersonalComponent } from './personal/personal.component';
-import { PaginatorPanel } from '@lib/paginator-panel/paginator-panel';
+import { PaginatorPanel } from '@lib/paginator/paginator-panel/paginator-panel';
 import { GlobalErrorHandler } from '@services/global.error.handler';
 import { Messenger, MessengerComponent } from '@services/messenger';
 import { WaitSpinner } from '@services/wait-spinner';
 import { Logger } from '@services/logger';
-import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -43,10 +40,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     BasketComponent,
     ProductCardDialogComponent,
     ProductCardComponent,
-    PersonalComponent,
     MessengerComponent,
-    PaginatorPanel,
-    FavoritesComponent
+    PaginatorPanel
   ],
   imports: [
     BrowserModule,
@@ -58,8 +53,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     MaterialModule,
     AccordionModule,
     HttpModule,
-    HttpClientModule,
-    Ng2CompleterModule
+    HttpClientModule
   ],
   providers: [
     {

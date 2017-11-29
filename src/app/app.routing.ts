@@ -6,6 +6,7 @@ import { ListComponent } from './list/list.component';
 import { BasketComponent } from './basket/basket.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { PersonalComponent } from './personal/personal.component';
+import { PersonalModule } from './personal/personal.module';
 
 const appRoutes: Routes = [
   {
@@ -34,7 +35,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'personal',
-    component: PersonalComponent,
+    loadChildren: './personal/personal.module#PersonalModule',
     canActivate: [AuthGuard]
   }
 ];
