@@ -52,7 +52,6 @@ export class AppComponent implements OnInit {
     _router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         console.log(_router);
-        this.hasCurrentUser = this._userService.hasCurrentUser();
         this.checkUser();
       }
     });
